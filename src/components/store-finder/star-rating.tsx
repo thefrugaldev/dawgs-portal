@@ -5,8 +5,8 @@ const StarRating = () => {
   return (
     <div className="relative">
       <div className="flex gap-1">
-        {Array.from({ length: 5 }, () => (
-          <Star key={1} fill="#111" strokeWidth={0} />
+        {Array.from({ length: 5 }, (e, i) => (
+          <Star key={i} fill="#111" strokeWidth={0} />
         ))}
       </div>
       <div className="flex gap-1 absolute top-0">

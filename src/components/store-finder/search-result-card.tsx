@@ -31,9 +31,7 @@ const SearchResultCard = () => {
             <Info className="cursor-pointer" />
           </div>
         </div>
-        <CardDescription>
-          <StarRating />
-        </CardDescription>
+        <StarRating />
       </CardHeader>
       <CardContent>
         <p className="text-sm text-muted-foreground">314 5th St</p>
@@ -41,7 +39,7 @@ const SearchResultCard = () => {
         <p className="text-sm text-muted-foreground">(706) 323-4005</p>
         <p className="text-sm text-muted-foreground flex content-center gap-2">
           <Fuel />
-          <p className="self-center">$3.25/Regular*</p>
+          <span className="self-center">$3.25/Regular*</span>
         </p>
       </CardContent>
     </Card>
