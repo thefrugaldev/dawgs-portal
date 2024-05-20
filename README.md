@@ -14,6 +14,18 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+## Setting Up Google Cloud Project
+
+1. [Create new project](https://console.cloud.google.com/projectcreate) - Give the project a name
+   ![Project Name](/markdown/create-project.png)
+2. After setting up a billing account, go to the [credentials page](https://console.cloud.google.com/projectselector2/google/maps-apis/credentials) and choose your new project name.
+3. You should be presented with a "Maps API Key" that you'll need to copy. - Click on the API key and scroll down to "Set an application restriction" and choose "Websites" - Make sure you add https://dawgs-portal.vercel.app/ under "Website restrictions" and click "Save" at the bottom.
+   ![Website Restrictions](/markdown/website-restrictions.png)
+4. Next, you'll need to go to the Maps API ["List of APIs" page](https://console.cloud.google.com/google/maps-apis/api-list) and again choose your project.
+5. You'll then need to "Enable" the following APIs from that list:
+   - **Maps JavaScript API**
+   -
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
