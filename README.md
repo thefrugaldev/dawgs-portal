@@ -24,7 +24,8 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 4. Next, you'll need to go to the Maps API ["List of APIs" page](https://console.cloud.google.com/google/maps-apis/api-list) and again choose your project.
 5. You'll then need to "Enable" the following APIs from that list:
    - **Maps JavaScript API**
-   -
+   - **Places API**
+   - **Places API (New)**
 
 ## Learn More
 

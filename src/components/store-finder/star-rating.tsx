@@ -1,7 +1,7 @@
 import { Star, StarHalf } from 'lucide-react';
 import React from 'react';
 
-const StarRating = () => {
+const StarRating = ({ rating }: { rating: number }) => {
   return (
     <div className="relative">
       <div className="flex gap-1">
@@ -10,9 +10,12 @@ const StarRating = () => {
         ))}
       </div>
       <div className="flex gap-1 absolute top-0">
+        {Array.from({ length: Math.floor(rating) }, (e, i) => (
+          <Star key={i} fill="yellow" strokeWidth={0} />
+        ))}
+        {/* <Star fill="yellow" strokeWidth={0} />
         <Star fill="yellow" strokeWidth={0} />
-        <Star fill="yellow" strokeWidth={0} />
-        <StarHalf fill="yellow" strokeWidth={0} />
+        <StarHalf fill="yellow" strokeWidth={0} /> */}
       </div>
     </div>
   );

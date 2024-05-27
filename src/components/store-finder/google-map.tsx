@@ -7,11 +7,9 @@ const GoogleMap = () => {
   const position = { lat: 34.3257, lng: -83.3557 };
 
   return (
-    <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY || ''}>
-      <Map defaultCenter={position} defaultZoom={10}>
-        <Marker position={position} />
-      </Map>
-    </APIProvider>
+    <Map defaultCenter={position} defaultZoom={10}>
+      <Marker position={position} />
+    </Map>
   );
 };
 
