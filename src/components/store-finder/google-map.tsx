@@ -1,6 +1,6 @@
 'use client';
 
-import { APIProvider, Map, Marker } from '@vis.gl/react-google-maps';
+import { Map, Marker } from '@vis.gl/react-google-maps';
 import React from 'react';
 
 const GoogleMap = () => {

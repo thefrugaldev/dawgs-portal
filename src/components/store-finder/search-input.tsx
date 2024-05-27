@@ -1,10 +1,7 @@
-'use client';
-
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import { Search } from 'lucide-react';
-import { useMap, useMapsLibrary } from '@vis.gl/react-google-maps';
 
 export interface SearchResult {
   name: string;

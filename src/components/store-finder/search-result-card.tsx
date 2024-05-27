@@ -1,14 +1,7 @@
 // TODO: remove useState and client directive
 'use client';
-import React, { FC, useState } from 'react';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '../ui/card';
+import React, { useState } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Fuel, Heart, Info } from 'lucide-react';
 import StarRating from './star-rating';
 import { Place } from '@/types/place';

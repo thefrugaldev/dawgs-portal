@@ -1,7 +1,3 @@
-'use client';
-
-import { useState } from 'react';
-import Image from 'next/image';
 // import { Session } from 'next-auth';
 // import { signOut } from 'next-auth/react';
 

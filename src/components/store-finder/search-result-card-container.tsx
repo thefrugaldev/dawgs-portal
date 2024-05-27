@@ -5,7 +5,7 @@ import {
   useMap,
   useMapsLibrary,
 } from '@vis.gl/react-google-maps';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import SearchResultCard from './search-result-card';
 
 const SearchResultCardContainer = () => {
@@ -15,7 +15,7 @@ const SearchResultCardContainer = () => {
 
   const [results, setResults] = useState<Place[]>([]);
 
-  const getPlaces = async () => {
+  const getPlaces = useCallback(async () => {
     if (!placesLib || !map) return;
 
     const svc = new placesLib.PlacesService(map);
@@ -32,9 +32,10 @@ const SearchResultCardContainer = () => {
 
           svc.getDetails({ placeId: place.place_id }, (place) => {
             if (!place) return;
-            console.log('Details: ', place);
+            // console.log('Details: ', place);
 
             const mappedPlace: Place = {
+              id: `${place.place_id!}${place.name}`,
               name: place.name,
               address: place.vicinity,
               rating: place.rating,
@@ -48,19 +49,21 @@ const SearchResultCardContainer = () => {
         });
       },
     );
-  };
+  }, [map, placesLib]);
 
   useEffect(() => {
     if (!placesLib || !map) return;
 
     getPlaces();
-  }, [placesLib, map]);
+  }, [placesLib, map, getPlaces]);
 
   if (status === APILoadingStatus.FAILED) return <div>Error!</div>;
 
   if (results.length === 0) return <div>Loading</div>;
 
-  return results.map((result) => <SearchResultCard result={result} />);
+  return results.map((result) => (
+    <SearchResultCard key={result.id} result={result} />
+  ));
 };
 
 export default SearchResultCardContainer;
