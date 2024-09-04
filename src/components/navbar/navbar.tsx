@@ -1,4 +1,7 @@
 // TODO: Remove when deprecating useState
+
+// This is a test comment added by Guy   9/4/24
+
 'use client';
 import Link from 'next/link';
 import DawgsLogo from '@/components/icons/dawgs-logo';
