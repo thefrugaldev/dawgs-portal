@@ -104,7 +104,6 @@ export default function App() {
       </select>
       <button>Add a Gas Station</button>
       <button  id="export-button" onClick={() => handleClick()}>Download As Excel</button>
-
       </div>
       <Table data={data} />
     </div>
