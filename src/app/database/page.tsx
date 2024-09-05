@@ -4,6 +4,7 @@
 import React from 'react';
 import * as XLSX from 'xlsx';
 import '../database.css';
+//import '../globals.css';
 
 const data = [
   { id: 1, stationName: 'Citgo', stationAddress: '314 5th St', area: '34.4325, -82.9302', gasPumps: 12, dieselPumps: 3, ecLvl2: 0, ecFastDC: 0, dcfc: 0, ecCount: 0, chargeCapacity: 0, shopCount: 1, shopNames: 'Convenience Store', truckStop: 'Yes', bathroomStallCount: 8, seatingAvailable: 'Yes', seatingreenspaceAvailable: 'No', dailyCustomers: 550 },
@@ -55,8 +56,8 @@ const data = [
         </thead>
         <tbody>
           {data.map((item: any) => (
-            <tr>
-            <td className="fix" key={item.id}>{item.stationName}</td>
+            <tr key={item.id}>
+            <td className="fix" >{item.stationName}</td>
               <td>{item.stationAddress}</td>
               <td>{item.area}</td>
               <td>{item.gasPumps}</td>
@@ -73,7 +74,6 @@ const data = [
               <td>{item.seatingAvailable}</td>
               <td>{item.greenspaceAvailable}</td>
               <td>{item.dailyCustomers}</td>
-            
             </tr>
           ))}
         </tbody>
@@ -97,9 +97,6 @@ function handleClick() {
 export default function App() {
   return (
     <div className="App">
-    <div className="header" >
-
-    </div>
       <div className="search-container">
       <input type="text" placeholder="Find a Gas Station..." />
       <select>
