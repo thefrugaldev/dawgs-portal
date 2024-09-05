@@ -31,47 +31,47 @@ const data = [
   return (
     <div className="relative overflow-x-auto">
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400" id="gas-station-table">
-        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <thead className="text-xs text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
-          <th className="fix">Station Name</th>
-          <th scope="col" className="px-6 py-3">Station Address</th>
-          <th scope="col" className="px-6 py-3">Area</th>
-            <th scope="col" className="px-6 py-3">Number of Gas Pumps</th>
-            <th scope="col" className="px-6 py-3">Number of Diesel Pumps</th>
-            <th scope="col" className="px-6 py-3">EC - Lvl 2</th>
-            <th scope="col" className="px-6 py-3">EC - Fast DC</th>
-            <th scope="col" className="px-6 py-3">DCFC</th>
-            <th scope="col" className="px-6 py-3">Number of EC stations</th>
-            <th scope="col" className="px-6 py-3">Charge Capacity</th>
-            <th scope="col" className="px-6 py-3">Number of Shops</th>
-            <th scope="col" className="px-6 py-3">Shop Names</th>
-            <th scope="col" className="px-6 py-3">Truck Stop?</th>
-            <th scope="col" className="px-6 py-3">Bathroom Stalls</th>
-            <th scope="col" className="px-6 py-3">Seating Available?</th>
-            <th scope="col" className="px-6 py-3">Greenspace Available?</th>
-            <th scope="col" className="px-6 py-3">Number of Daily Customers</th>
+          <th scope="col" className="px-1 py-1">Station Name</th>
+          <th scope="col" className="px-1 py-1">Station Address</th>
+          <th scope="col" className="px-1 py-1">Area</th>
+            <th scope="col" className="px-1 py-1">Number of Gas Pumps</th>
+            <th scope="col" className="px-1 py-1">Number of Diesel Pumps</th>
+            <th scope="col" className="px-1 py-1">EC - Lvl 2</th>
+            <th scope="col" className="px-1 py-1">EC - Fast DC</th>
+            <th scope="col" className="px-1 py-1">DCFC</th>
+            <th scope="col" className="px-1 py-1">Number of EC stations</th>
+            <th scope="col" className="px-1 py-1">Charge Capacity</th>
+            <th scope="col" className="px-1 py-1">Number of Shops</th>
+            <th scope="col" className="px-1 py-1">Shop Names</th>
+            <th scope="col" className="px-1 py-1">Truck Stop?</th>
+            <th scope="col" className="px-1 py-1">Bathroom Stalls</th>
+            <th scope="col" className="px-1 py-1">Seating Available?</th>
+            <th scope="col" className="px-1 py-1">Greenspace Available?</th>
+            <th scope="col" className="px-1 py-1">Number of Daily Customers</th>
           </tr>
         </thead>
         <tbody>
           {data.map((item: any) => (
             <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700" key={item.id}>
-            <td className="fix" >{item.stationName}</td>
-            <td className="px-6 py-4">{item.stationAddress}</td>
-              <td className="px-6 py-4">{item.area}</td>
-              <td className="px-6 py-4">{item.gasPumps}</td>
-              <td className="px-6 py-4">{item.dieselPumps}</td>
-              <td className="px-6 py-4">{item.ecLvl2}</td>
-              <td className="px-6 py-4">{item.ecFastDC}</td>
-              <td className="px-6 py-4">{item.dcfc}</td>
-              <td className="px-6 py-4">{item.ecCount}</td>
-              <td className="px-6 py-4">{item.chargeCapacity}</td>
-              <td className="px-6 py-4">{item.shopCount}</td>
-              <td className="px-6 py-4">{item.shopNames}</td>
-              <td className="px-6 py-4">{item.truckStop}</td>
-              <td className="px-6 py-4">{item.bathroomStallCount}</td>
-              <td className="px-6 py-4">{item.seatingAvailable}</td>
-              <td className="px-6 py-4">{item.greenspaceAvailable}</td>
-              <td className="px-6 py-4">{item.dailyCustomers}</td>
+            <td className="px-2 py-1" >{item.stationName}</td>
+            <td className="px-2 py-1" >{item.stationAddress}</td>
+              <td className="px-2 py-1" >{item.area}</td>
+              <td className="px-2 py-1" >{item.gasPumps}</td>
+              <td className="px-2 py-1" >{item.dieselPumps}</td>
+              <td className="px-2 py-1" >{item.ecLvl2}</td>
+              <td className="px-2 py-1" >{item.ecFastDC}</td>
+              <td className="px-2 py-1" >{item.dcfc}</td>
+              <td className="px-2 py-1" >{item.ecCount}</td>
+              <td className="px-2 py-1" >{item.chargeCapacity}</td>
+              <td className="px-2 py-1" >{item.shopCount}</td>
+              <td className="px-2 py-1" >{item.shopNames}</td>
+              <td className="px-2 py-1" >{item.truckStop}</td>
+              <td className="px-2 py-1" >{item.bathroomStallCount}</td>
+              <td className="px-2 py-1" >{item.seatingAvailable}</td>
+              <td className="px-2 py-1" >{item.greenspaceAvailable}</td>
+              <td className="px-2 py-1" >{item.dailyCustomers}</td>
             </tr>
           ))}
         </tbody>
