@@ -1,11 +1,11 @@
 'use client';
 
-// import { signIn } from 'next-auth/react';
+import * as React from "react"
 
 import { Button } from '@/components/ui/button';
-
+/* original
 export const SignInButton = ({ onSignIn }: { onSignIn: () => void }) => {
-  return (
+ return (
     <>
       <Button className="bg-glory hover:bg-glory/90" onClick={() => onSignIn()}>
         Sign in
@@ -13,3 +13,21 @@ export const SignInButton = ({ onSignIn }: { onSignIn: () => void }) => {
     </>
   );
 };
+*/
+
+export const SignInButton = ({ onSignIn }: { onSignIn: () => void }) => {
+  return (
+     <>
+       <Button className="bg-glory hover:bg-glory/90" onClick={() => onSignIn()}>
+        <a href="/api/auth/login">Sign in</a>
+       </Button>
+     </>
+   );
+ };
+
+
+
+/*
+export default function Login() {
+  return <a href="/api/auth/login">Login</a>;
+};*/
