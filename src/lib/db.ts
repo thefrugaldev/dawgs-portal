@@ -8,15 +8,15 @@ async function connectToDatabase() {
     return cachedDb;
   }
 
-  const MONGODB_URI = process.env.DB_URI;
+  const DB_URI = process.env.DB_URI;
 
-  if (!MONGODB_URI) {
+  if (!DB_URI) {
     throw new Error(
-      'Please define the MONGODB_URI environment variable inside .env.local',
+      'Please define the DB_URI environment variable inside .env.local',
     );
   }
 
-  const connection = await mongoose.connect(MONGODB_URI);
+  const connection = await mongoose.connect(DB_URI);
 
   cachedDb = connection;
   return connection;
