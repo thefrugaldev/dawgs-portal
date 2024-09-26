@@ -1,5 +1,5 @@
+// @ts-nocheck
 import mongoose from 'mongoose';
-
 const MONGODB_URI = process.env.DB_URI;
 
 if (!MONGODB_URI) {
@@ -28,11 +28,13 @@ async function dbConnect() {
     const opts = {
       bufferCommands: false,
     };
-    cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
-      console.log('Db connected');
+    cached.promise = await mongoose
+      .connect(MONGODB_URI, opts)
+      .then((mongoose) => {
+        console.log('Db connected');
 
-      return mongoose;
-    });
+        return mongoose;
+      });
   }
   try {
     cached.conn = await cached.promise;

@@ -8,11 +8,8 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import React from 'react';
-import { getGasStations } from './actions';
+import { getGasStations } from '../actions';
 import { IGasStation } from '../../models/gas-station';
-// import mongoose from 'mongoose';
-
-// import * as XLSX from 'xlsx';
 
 // const data = [
 //   {
@@ -418,8 +415,6 @@ import { IGasStation } from '../../models/gas-station';
 // ];
 //const yourfunc = ({data}: {data: type}) => {
 const Table = ({ data }: any) => {
-  console.log(data);
-
   return (
     <div className="relative overflow-x-auto">
       <table
@@ -521,8 +516,6 @@ const Table = ({ data }: any) => {
 
 export default async function App() {
   const data = await getGasStations();
-
-  console.log('TEST');
 
   // function handleClick() {
   //   downloadExcel(data);

@@ -25,8 +25,6 @@ const SearchResultCardContainer = () => {
       (places) => {
         if (!places) return;
 
-        console.log('Google places: ', places);
-
         places.map((place) => {
           if (!place || !place.place_id) return;
 
