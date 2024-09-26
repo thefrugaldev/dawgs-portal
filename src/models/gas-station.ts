@@ -26,4 +26,4 @@ const gasStationSchema = new Schema<IGasStation>({
   },
 });
 
-export default models.GasStation || model('gasstations', gasStationSchema);
+export default models.gasstations || model('gasstations', gasStationSchema);
