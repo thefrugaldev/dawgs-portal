@@ -19,7 +19,7 @@ export async function GET(): Promise<ResponseData> {
   try {
     const command = new GetObjectCommand({
       Bucket: process.env.AWS_BUCKET_NAME!,
-      Key: 'Loves Gas Station.png',
+      Key: '[bucketfolder]/[image.png]',
     });
 
     const url = await getSignedUrl(s3, command);
