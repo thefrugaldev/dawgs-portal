@@ -26,6 +26,7 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
    - **Maps JavaScript API**
    - **Places API**
    - **Places API (New)**
+   - **Directions API**
 
 ## Learn More
 
@@ -43,4 +44,5 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 ## Development Team
+
 Addison Hicks, Aaron Bemis
