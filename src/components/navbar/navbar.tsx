@@ -26,7 +26,7 @@ export const Navbar = () => {
             Map
           </Link>
 
-          <Link href="/" className="text-white font-mono text-lg font-bold">
+          <Link href="/database" className="text-white font-mono text-lg font-bold">
             Database
           </Link>
           {loggedIn ? (
