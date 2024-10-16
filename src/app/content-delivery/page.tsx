@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const getImage = async () => {
   try {
-    const response = await fetch('/lib/images'); // Make sure the path is correct
+    const response = await fetch('app/lib/images');
     console.log('Fetch response:', response);
     
     if (!response.ok) {
