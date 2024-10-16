@@ -3,27 +3,32 @@ import Image from 'next/image'
 
 const getImage = async () => {
   try {
-    const response = await fetch('http://localhost:3000/lib/images');
+    const response = await fetch('/lib/images'); // Make sure the path is correct
+    console.log('Fetch response:', response);
+    
     if (!response.ok) {
-      throw new Error('Failed to fetch image');
+      throw new Error(`Failed to fetch image, status: ${response.status}`);
     }
-    const data = await response.text()
-    return data
+
+    const data = await response.text();
+    console.log('Fetched image data:', data);
+    
+    return data;
   } catch (error) {
     console.error('Error fetching image:', error);
   }
 }
 
 export default async function ScreenshotImage() {
- const imageUrl = await getImage()
- 
+  const imageUrl = await getImage();
+
   return (
     <div>
       {imageUrl ? (
-        <Image src={imageUrl} alt="s3url" width='1200' height='1200'/>
+        <Image src={imageUrl} alt="s3url" width={1200} height={1200} />
       ) : (
         <p>Loading image...</p>
       )}
     </div>
   );
-};
+}
