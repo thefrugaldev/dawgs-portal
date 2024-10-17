@@ -1,4 +1,9 @@
-export const searchAlongRoute = async (textQuery: string, polyline: string) => {
+import { GooglePlace } from '@/types/google';
+
+export const searchAlongRoute = async (
+  textQuery: string,
+  polyline: string,
+): Promise<GooglePlace[]> => {
   console.log('Searching along polyline: ', polyline);
 
   const res = await fetch(
@@ -9,7 +14,8 @@ export const searchAlongRoute = async (textQuery: string, polyline: string) => {
         'Content-Type': 'application/json',
         'X-Goog-Api-Key': `${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}`,
         'X-Goog-FieldMask':
-          'places.displayName,places.formattedAddress,places.priceLevel',
+          //'*',
+          'places.id,places.displayName,places.formattedAddress,places.location,places.evChargeOptions,places.fuelOptions,places.accessibilityOptions',
       },
       body: JSON.stringify({
         textQuery: textQuery,
@@ -24,4 +30,6 @@ export const searchAlongRoute = async (textQuery: string, polyline: string) => {
 
   const json = await res.json();
   console.log('RESPONSE: ', json);
+
+  return json;
 };

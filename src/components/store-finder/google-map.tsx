@@ -5,16 +5,23 @@ import { Map, useMap, useMapsLibrary } from '@vis.gl/react-google-maps';
 import {} from '@vis.gl/react-google-maps';
 import React, { useCallback, useEffect, useState } from 'react';
 import { Polyline } from '../google-maps/polyline';
+import { GooglePlace } from '@/types/google';
+import SearchResults from './search-results';
 
 const GoogleMap = () => {
   const position = { lat: 34.3257, lng: -83.3557 };
   const map = useMap();
   const routesLib = useMapsLibrary('routes');
   const [route, setRoute] = useState<any>([]);
+  const [searchResults, setSearchResults] = useState<GooglePlace[]>();
   const [polyline, setPolyline] = useState<string>('');
 
-  const search = useCallback((polyline: string) => {
-    searchAlongRoute('Restaurants', polyline);
+  const search = useCallback(async (polyline: string) => {
+    const { places } = (await searchAlongRoute(
+      'Gas Stations',
+      polyline,
+    )) as any;
+    setSearchResults(places);
   }, []);
 
   useEffect(() => {
@@ -47,6 +54,8 @@ const GoogleMap = () => {
         strokeWeight={10}
         strokeColor={'#0f53ff'}
       />
+
+      <SearchResults searchResults={searchResults} />
     </Map>
   );
 };
