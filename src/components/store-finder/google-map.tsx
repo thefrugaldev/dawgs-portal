@@ -48,7 +48,11 @@ const GoogleMap = () => {
   }, [routesLib, map]);
 
   return (
-    <Map defaultCenter={position} defaultZoom={10}>
+    <Map
+      mapId={process.env.NEXT_PUBLIC_GOOGLE_MAPS_ID}
+      defaultCenter={position}
+      defaultZoom={10}
+    >
       <Polyline
         encodedPath={polyline}
         strokeWeight={10}

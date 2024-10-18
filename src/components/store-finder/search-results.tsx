@@ -1,6 +1,6 @@
 import { GooglePlace } from '@/types/google';
-import { Marker } from '@vis.gl/react-google-maps';
 import React from 'react';
+import MarkerWithWindowInfo from '../google-maps/marker-with-window-info';
 
 interface SearchResultsProps {
   searchResults?: GooglePlace[];
@@ -12,9 +12,10 @@ const SearchResults: React.FC<SearchResultsProps> = ({ searchResults }) => {
   console.log();
 
   return searchResults?.map((r) => (
-    <Marker
+    <MarkerWithWindowInfo
       key={r.id}
       position={{ lat: r.location.latitude, lng: r.location.longitude }}
+      markerInfo={r}
     />
   ));
 };
