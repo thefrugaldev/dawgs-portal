@@ -1,23 +1,25 @@
 // app/content-delivery/page.tsx
-import Image from 'next/image'
+import Image from 'next/image';
 
 const getImage = async () => {
+  console.log('Getting image');
+
   try {
-    const response = await fetch('api/aws/images');
+    const response = await fetch(`${process.env.APP_URL}/api/aws/images`);
     console.log('Fetch response:', response);
-    
+
     if (!response.ok) {
       throw new Error(`Failed to fetch image, status: ${response.status}`);
     }
 
     const data = await response.text();
     console.log('Fetched image data:', data);
-    
+
     return data;
   } catch (error) {
     console.error('Error fetching image:', error);
   }
-}
+};
 
 export default async function ScreenshotImage() {
   const imageUrl = await getImage();
