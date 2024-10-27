@@ -4,11 +4,7 @@ import { S3Client } from '@aws-sdk/client-s3';
 import { GetObjectCommand } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 
-type ResponseData = {
-  url: string;
-};
-
-export async function GET(): Promise<ResponseData> {
+export async function GET() {
   const s3 = new S3Client({
     credentials: {
       accessKeyId: process.env.AWS_ACCESS_KEY!,
