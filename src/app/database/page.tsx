@@ -10,7 +10,8 @@ import {
 import React from 'react';
 import { getGasStations } from '../actions';
 import { IGasStation } from '../../models/gas-station';
-import * as XLSX from 'xlsx';
+import { DownloadButton } from '@/components/ui/download';
+
 
 const Table = ({ data }: any) => {
   return (
@@ -116,23 +117,8 @@ const Table = ({ data }: any) => {
   );
 };
 
-// const downloadExcel = (data: any) => {
-//   const worksheet = XLSX.utils.json_to_sheet(data);
-//   const workbook = XLSX.utils.book_new();
-//   XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
-//   XLSX.writeFile(workbook, "Gas_Stations.xlsx");
-// };
-// const data = "hello";
-
-
-// function handleClick() {
-  
-//   downloadExcel(data);
-//   console.log("I was clicked!");
-// }
-
 export default async function App() {
-  const data = await getGasStations();
+   const data = await getGasStations();
 
   return (
     <div className="p-5">
@@ -154,9 +140,10 @@ export default async function App() {
           </SelectContent>
         </Select>
         <Button>Add a Gas Station</Button>
-        <Button id="export-button">Download As Excel</Button>
+        <DownloadButton />
       </div>
       <Table data={data} />
     </div>
   );
 }
+
