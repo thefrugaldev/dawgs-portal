@@ -2,17 +2,26 @@
 'use client';
 import Link from 'next/link';
 import DawgsLogo from '@/components/icons/dawgs-logo';
-// import { getServerSession } from 'next-auth';
+//import { getServerSession } from 'next-auth';
 
-// import { authOptions } from '@/app/api/auth/[...nextauth]/auth-options';
+//import { authOptions } from '@/app/api/auth/[...nextauth]/auth-options';
 import { SignInButton } from '@/components/navbar/sign-in-button';
 import { UserDropdown } from '@/components/navbar/user-dropdown';
 import { useState } from 'react';
+import { useUser } from '@auth0/nextjs-auth0/client';
+
+import  AuthCheck  from '@/components/authCheck';
+
+
 
 export const Navbar = () => {
   // TODO: implement auth
-  // const session = await getServerSession(authOptions);
-  const [loggedIn, setLoggedIn] = useState<boolean>(false);
+   //const session = getSession();
+  //const [loggedIn, setLoggedIn] = useState<boolean>(false);
+
+ const [loggedIn, setLoggedIn] = useState<boolean>(false);
+ //const { user, error, isLoading } = useUser();
+ const authCheck = AuthCheck();
 
   return (
     <header className="w-full border-b">
@@ -29,11 +38,13 @@ export const Navbar = () => {
           <Link href="/database" className="text-white font-mono text-lg font-bold">
             Database
           </Link>
-          {loggedIn ? (
+          {authCheck ? (
             <UserDropdown onSignOut={() => setLoggedIn(false)} />
           ) : (
             <SignInButton onSignIn={() => setLoggedIn(true)} />
           )}
+
+
         </div>
       </div>
     </header>
