@@ -20,7 +20,8 @@ export interface IGasStation {
   seatingAvailable: String;
   greenspaceAvailable: String;
   dailyCustomers: Number;
-  imageLink: String
+  imageLink: String;
+  notes: String;
 }
 
 const gasStationSchema = new Schema<IGasStation>({
@@ -101,6 +102,10 @@ const gasStationSchema = new Schema<IGasStation>({
     required: false,
   },
   imageLink: {
+    type: String,
+    required: false,
+  },
+  notes: {
     type: String,
     required: false,
   }
