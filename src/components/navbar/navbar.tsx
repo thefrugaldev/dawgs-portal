@@ -4,15 +4,10 @@ import DawgsLogo from '@/components/icons/dawgs-logo';
 import { SignInButton } from '@/components/navbar/sign-in-button';
 import { UserDropdown } from '@/components/navbar/user-dropdown';
 
-
-import  AuthCheck  from '@/components/authCheck';
-
-
+import AuthCheck from '@/components/authCheck';
 
 export const Navbar = () => {
- 
-
- const authCheck = AuthCheck();
+  const authCheck = AuthCheck();
 
   return (
     <header className="w-full border-b">
@@ -26,7 +21,10 @@ export const Navbar = () => {
             Map
           </Link>
 
-          <Link href="/database" className="text-white font-mono text-lg font-bold">
+          <Link
+            href="/database"
+            className="text-white font-mono text-lg font-bold"
+          >
             Database
           </Link>
           {authCheck ? (
@@ -34,8 +32,6 @@ export const Navbar = () => {
           ) : (
             <SignInButton onSignIn={() => true} />
           )}
-
-
         </div>
       </div>
     </header>
