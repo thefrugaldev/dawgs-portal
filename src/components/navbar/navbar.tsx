@@ -1,26 +1,17 @@
-// TODO: Remove when deprecating useState
 'use client';
 import Link from 'next/link';
 import DawgsLogo from '@/components/icons/dawgs-logo';
-//import { getServerSession } from 'next-auth';
-
-//import { authOptions } from '@/app/api/auth/[...nextauth]/auth-options';
 import { SignInButton } from '@/components/navbar/sign-in-button';
 import { UserDropdown } from '@/components/navbar/user-dropdown';
-import { useState } from 'react';
-import { useUser } from '@auth0/nextjs-auth0/client';
+
 
 import  AuthCheck  from '@/components/authCheck';
 
 
 
 export const Navbar = () => {
-  // TODO: implement auth
-   //const session = getSession();
-  //const [loggedIn, setLoggedIn] = useState<boolean>(false);
+ 
 
- const [loggedIn, setLoggedIn] = useState<boolean>(false);
- //const { user, error, isLoading } = useUser();
  const authCheck = AuthCheck();
 
   return (
@@ -39,9 +30,9 @@ export const Navbar = () => {
             Database
           </Link>
           {authCheck ? (
-            <UserDropdown onSignOut={() => setLoggedIn(false)} />
+            <UserDropdown onSignOut={() => false} />
           ) : (
-            <SignInButton onSignIn={() => setLoggedIn(true)} />
+            <SignInButton onSignIn={() => true} />
           )}
 
 
