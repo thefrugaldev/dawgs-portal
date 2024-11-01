@@ -27,9 +27,7 @@ export function DownloadButton() {
     };
 
     function handleClick() {
-        console.log("Button clicked!");
         downloadExcel(data);
-        console.log("I was clicked!");
     }
 
     return (

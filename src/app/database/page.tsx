@@ -16,99 +16,61 @@ import { DownloadButton } from '@/components/ui/download';
 const Table = ({ data }: any) => {
   return (
     <div className="relative overflow-x-auto">
-<table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 table-auto" id="gas-station-table">
-<thead className="text-xs text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 table-auto" id="gas-station-table">
+        <thead className="text-xs text-gray-700 bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
           <tr>
-            <th scope="col" className="px-1 py-1 border">
-              Station Name
-            </th>
-            <th scope="col" className="px-1 py-1 border">
-              Station Address
-            </th>
-            <th scope="col" className="px-1 py-1 border">
-              Area
-            </th>
-            <th scope="col" className="px-1 py-1 border">
-              Gas Pumps
-            </th>
-            <th scope="col" className="px-1 py-1 border">
-              Diesel Pumps
-            </th>
-            <th scope="col" className="px-1 py-1 border">
-              EC - Lvl 2
-            </th>
-            <th scope="col" className="px-1 py-1 border">
-              EC - Fast DC
-            </th>
-            <th scope="col" className="px-1 py-1 border">
-              DCFC
-            </th>
-            <th scope="col" className="px-1 py-1 border">
-              EC stations
-            </th>
-            <th scope="col" className="px-1 py-1 border">
-              Charge Capacity
-            </th>
-            <th scope="col" className="px-1 py-1 border">
-              Number of Shops
-            </th>
-            <th scope="col" className="px-1 py-1 border">
-              Shop Names
-            </th>
-            <th scope="col" className="px-1 py-1 border">
-              Truck Stop?
-            </th>
-            <th scope="col" className="px-1 py-1 border">
-              Bathroom Stalls
-            </th>
-            <th scope="col" className="px-1 py-1 border">
-              Seating Available?
-            </th>
-            <th scope="col" className="px-1 py-1 border">
-              Greenspace Available?
-            </th>
-            <th scope="col" className="px-1 py-1 border">
-              Number of Daily Customers
-            </th>
-            <th scope="col" className="px-1 py-1 border">
-              Image(s)
-            </th>
-            <th scope="col" className="px-1 py-1 border">
-              Notes
-            </th>
+            <th className="w-1/12 px-3 py-1 border truncate">Station Name</th>
+            <th className="w-1/12 px-3 py-1 border truncate">Station Address</th>
+            <th className="w-1/12 px-3 py-1 border truncate">Area</th>
+            <th className="w-1/8 px-3 py-1 border truncate">Gas Pumps</th>
+            <th className="w-1/8 px-3 py-1 border truncate">Diesel Pumps</th>
+            <th className="w-1/8 px-3 py-1 border truncate">EC - Lvl 2</th>
+            <th className="w-1/8 px-3 py-1 border truncate">EC - Fast DC</th>
+            <th className="w-1/8 px-3 py-1 border truncate">DCFC</th>
+            <th className="w-1/8 px-3 py-1 border truncate">EC stations</th>
+            <th className="w-1/8 px-3 py-1 border truncate">Charge Capacity</th>
+            <th className="w-1/8 px-3 py-1 border truncate">Number of Shops</th>
+            <th className="w-1/8 px-3 py-1 border truncate">Shop Names</th>
+            <th className="w-1/8 px-3 py-1 border truncate">Truck Stop?</th>
+            <th className="w-1/8 px-3 py-1 border truncate">Bathroom Stalls</th>
+            <th className="w-1/8 px-3 py-1 border truncate">Seating?</th>
+            <th className="w-1/8 px-3 py-1 border truncate">Greenspace?</th>
+            <th className="w-1/8 px-3 py-1 border truncate">Number of Daily Customers</th>
+            <th className="w-1/8 px-3 py-1 border truncate">Image(s)</th>
+            <th className="w-[10px] px-3 py-1 border truncate">Notes</th>
           </tr>
         </thead>
   <tbody>
     {data.map((item: IGasStation) => (
       <tr
-        className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+        className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
         key={item.id}
       >
-        <td className="px-3 py-2 border">{item.stationName}</td>
-        <td className="px-3 py-2 border">{item.stationAddress}</td>
-        <td className="px-3 py-2 border">
+        <td className="px-3 py-1 border whitespace-nowrap">{item.stationName}</td>
+        <td className="px-3 py-1 border whitespace-nowrap">{item.stationAddress}</td>
+        <td className="px-3 py-1 border whitespace-nowrap">
           {item.lat.toString()}, {item.long.toString()}
         </td>
-        <td className="px-3 py-2 border">{item.gasPumps.toString()}</td>
-        <td className="px-3 py-2 border">{item.dieselPumps.toString()}</td>
-        <td className="px-3 py-2 border">{item.ecLvl2.toString()}</td>
-        <td className="px-3 py-2 border">{item.ecFastDC.toString()}</td>
-        <td className="px-3 py-2 border">{item.dcfc.toString()}</td>
-        <td className="px-3 py-2 border">{item.ecCount.toString()}</td>
-        <td className="px-3 py-2 border">{item.chargeCapacity.toString()}</td>
-        <td className="px-3 py-2 border">{item.shopCount.toString()}</td>
-        <td className="px-3 py-2 border">{item.shopNames}</td>
-        <td className="px-3 py-2 border">{item.truckStop}</td>
-        <td className="px-3 py-2 border">{item.bathroomStallCount.toString()}</td>
-        <td className="px-3 py-2 border">{item.seatingAvailable}</td>
-        <td className="px-3 py-2 border">{item.greenspaceAvailable}</td>
-        <td className="px-3 py-2 border">{item.dailyCustomers.toString()}</td>
-        <td className="px-3 py-2 border">
+        <td className="px-3 py-1 border">{item.gasPumps.toString()}</td>
+        <td className="px-3 py-1 border">{item.dieselPumps.toString()}</td>
+        <td className="px-3 py-1 border">{item.ecLvl2.toString()}</td>
+        <td className="px-3 py-1 border">{item.ecFastDC.toString()}</td>
+        <td className="px-3 py-1 border">{item.dcfc.toString()}</td>
+        <td className="px-3 py-1 border">{item.ecCount.toString()}</td>
+        <td className="px-3 py-1 border">{item.chargeCapacity.toString()}</td>
+        <td className="px-3 py-1 border">{item.shopCount.toString()}</td>
+        <td className="px-3 py-1 border truncate"><div className="w-36 text-ellipsis overflow-hidden whitespace-nowrap">{item.shopNames}</div></td>
+        <td className="px-3 py-1 border">{item.truckStop}</td>
+        <td className="px-3 py-1 border">{item.bathroomStallCount.toString()}</td>
+        <td className="px-3 py-1 border">{item.seatingAvailable}</td>
+        <td className="px-3 py-1 border">{item.greenspaceAvailable}</td>
+        <td className="px-3 py-1 border">{item.dailyCustomers.toString()}</td>
+        <td className="px-3 py-1 border">
           <a href={item.imageLink.toString()} target="_blank" className="text-blue-600 hover:underline">
             Image_1
           </a>
         </td>
-        <td className="px-3 py-2">{item.notes}</td>
+        <td className="px-3 py-1 border"><div className="w-36 text-ellipsis overflow-hidden whitespace-nowrap">{item.notes}</div></td>
       </tr>
     ))}
   </tbody>
