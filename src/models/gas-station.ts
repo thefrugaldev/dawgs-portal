@@ -1,7 +1,7 @@
 import { Schema, model, models } from 'mongoose';
 
 export interface IGasStation {
-  id: number;
+  _id: string;
   stationName: string;
   stationAddress: string;
   lat: Number;
@@ -25,8 +25,8 @@ export interface IGasStation {
 }
 
 const gasStationSchema = new Schema<IGasStation>({
-  id: {
-    type: Number,
+  _id: {
+    type: String,
     required: true,
   },
   stationName: {
