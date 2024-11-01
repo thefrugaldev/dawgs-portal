@@ -1,5 +1,3 @@
-//import { Session } from 'next-auth';
-//import { signOut } from 'next-auth/react';
 'use client';
 
 import Link from 'next/link';
@@ -33,12 +31,8 @@ export const UserDropdown = ({ onSignOut }: { onSignOut: () => void }) => {
         <div className="flex flex-col items-center justify-center p-2">
           <Sticker className="h-[100px] w-[100px] overflow-hidden rounded-full" />
           <h2 className="py-2 text-lg font-bold">{user?.name}</h2>
-          <Button
-          // disabled={useUser?.isActive || isPending}
-          // className="w-64"
-          >
-            Profile
-          </Button>
+          <h2 className="py-2 text-lg font-bold">{user?.name}</h2>
+          <Button>Profile</Button>
         </div>
         <DropdownMenuSeparator />
         <DropdownMenuItem onSubmit={() => onSignOut()}>
