@@ -44,7 +44,7 @@ const Table = ({ data }: any) => {
     {data.map((item: IGasStation) => (
       <tr
         className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
-        key={item.id}
+        key={item._id}
       >
         <td className="px-3 py-1 border whitespace-nowrap">{item.stationName}</td>
         <td className="px-3 py-1 border whitespace-nowrap">{item.stationAddress}</td>
