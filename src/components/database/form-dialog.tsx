@@ -19,8 +19,8 @@ const DatabaseFormDialog = () => {
       <DialogTrigger asChild>
         <Button>Add Gas Station</Button>
       </DialogTrigger>
-      <ScrollArea>
-        <DialogContent>
+      <DialogContent className="h-full sm:max-w-2xl max-h-[96%] p-4">
+        <ScrollArea className="px-4">
           <DialogHeader>
             <DialogTitle>Add new Gas Station</DialogTitle>
             <DialogDescription>
@@ -31,8 +31,8 @@ const DatabaseFormDialog = () => {
           <DialogFooter>
             <Button type="submit">Save changes</Button>
           </DialogFooter>
-        </DialogContent>
-      </ScrollArea>
+        </ScrollArea>
+      </DialogContent>
     </Dialog>
   );
 };
