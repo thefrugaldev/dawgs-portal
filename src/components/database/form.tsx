@@ -15,6 +15,8 @@ import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import GasInfoFormGroup from './form-groups/gas-info';
 import AreaFormGroup from './form-groups/area';
+import ECInfoFormGroup from './form-groups/ec-info';
+import AmmenitiesInfoFormGroup from './form-groups/ammenities-info';
 
 export const formSchema = z.object({
   _id: z.string(),
@@ -31,10 +33,10 @@ export const formSchema = z.object({
   chargeCapacity: z.number(),
   shopCount: z.number(),
   shopNames: z.string(),
-  truckStop: z.string(),
+  truckStop: z.boolean(),
   bathroomStallCount: z.number(),
-  seatingAvailable: z.string(),
-  greenspaceAvailable: z.string(),
+  seatingAvailable: z.boolean(),
+  greenspaceAvailable: z.boolean(),
   dailyCustomers: z.number(),
   imageLink: z.string(),
   notes: z.string(),
@@ -82,6 +84,8 @@ const DatabaseForm = () => {
         />
         <AreaFormGroup />
         <GasInfoFormGroup />
+        <ECInfoFormGroup />
+        <AmmenitiesInfoFormGroup />
         <Button type="submit">Submit</Button>
       </form>
     </Form>

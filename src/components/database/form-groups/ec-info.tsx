@@ -12,19 +12,19 @@ import {
 import { Input } from '@/components/ui/input';
 import { z } from 'zod';
 
-const GasInfoFormGroup = () => {
+const ECInfoFormGroup = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
 
   return (
-    <div className="grid grid-cols-3 gap-1">
+    <div className="grid grid-cols-4 gap-2">
       <FormField
         control={form.control}
-        name="gasPumps"
+        name="ecLvl2"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Gas Pumps</FormLabel>
+            <FormLabel>EC - Lvl 2</FormLabel>
             <FormControl>
               <Input type="number" {...field} />
             </FormControl>
@@ -34,10 +34,10 @@ const GasInfoFormGroup = () => {
       />
       <FormField
         control={form.control}
-        name="dieselPumps"
+        name="ecFastDC"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Diesel Pumps</FormLabel>
+            <FormLabel>EC - Fast DC</FormLabel>
             <FormControl>
               <Input type="number" {...field} />
             </FormControl>
@@ -47,10 +47,23 @@ const GasInfoFormGroup = () => {
       />
       <FormField
         control={form.control}
-        name="ecCount"
+        name="dcfc"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>EC Stations</FormLabel>
+            <FormLabel>DCFC</FormLabel>
+            <FormControl>
+              <Input type="number" {...field} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+      <FormField
+        control={form.control}
+        name="chargeCapacity"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Chg Capacity</FormLabel>
             <FormControl>
               <Input type="number" {...field} />
             </FormControl>
@@ -62,4 +75,4 @@ const GasInfoFormGroup = () => {
   );
 };
 
-export default GasInfoFormGroup;
+export default ECInfoFormGroup;
