@@ -14,8 +14,8 @@ export const searchAlongRoute = async (
         'Content-Type': 'application/json',
         'X-Goog-Api-Key': `${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}`,
         'X-Goog-FieldMask':
-          //'*',
-          'places.id,places.displayName,places.formattedAddress,places.location,places.evChargeOptions,places.fuelOptions,places.accessibilityOptions',
+          // '*',
+          'places.id,places.displayName,places.formattedAddress,places.location,places.evChargeOptions,places.fuelOptions,places.accessibilityOptions,places.googleMapsUri',
       },
       body: JSON.stringify({
         textQuery: textQuery,

@@ -16,9 +16,10 @@ interface AccessibilityOptions {
 
 export interface GooglePlace {
   id: string;
-  displayName: string;
+  displayName: { text: string; languageCode: string };
   formattedAddress: string;
   location: Location;
+  googleMapsUri: string;
   evChargeOptions: { connectorCount: number };
   fuelOptions: FuelOptions;
   accessibilityOptions: AccessibilityOptions;
