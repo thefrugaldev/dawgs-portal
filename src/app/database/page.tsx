@@ -60,10 +60,10 @@ const Table = ({ data }: any) => {
         <td className="px-3 py-1 border">{item.chargeCapacity.toString()}</td>
         <td className="px-3 py-1 border">{item.shopCount.toString()}</td>
         <td className="px-3 py-1 border truncate"><div className="w-36 text-ellipsis overflow-hidden whitespace-nowrap">{item.shopNames}</div></td>
-        <td className="px-3 py-1 border">{item.truckStop}</td>
+        <td className="px-3 py-1 border">{String(item.truckStop)}</td>
         <td className="px-3 py-1 border">{item.bathroomStallCount.toString()}</td>
-        <td className="px-3 py-1 border">{item.seatingAvailable}</td>
-        <td className="px-3 py-1 border">{item.greenspaceAvailable}</td>
+        <td className="px-3 py-1 border">{String(item.seatingAvailable)}</td>
+        <td className="px-3 py-1 border">{String(item.greenspaceAvailable)}</td>
         <td className="px-3 py-1 border">{item.dailyCustomers.toString()}</td>
         <td className="px-3 py-1 border">
           <a href={item.imageLink.toString()} target="_blank" className="text-blue-600 hover:underline">
