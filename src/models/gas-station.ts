@@ -15,10 +15,10 @@ export interface IGasStation {
   chargeCapacity: Number;
   shopCount: Number;
   shopNames: String;
-  truckStop: String;
+  truckStop: boolean;
   bathroomStallCount: Number;
-  seatingAvailable: String;
-  greenspaceAvailable: String;
+  seatingAvailable: boolean;
+  greenspaceAvailable: boolean;
   dailyCustomers: Number;
   imageLink: String;
   notes: String;
@@ -82,7 +82,7 @@ const gasStationSchema = new Schema<IGasStation>({
     required: false,
   },
   truckStop: {
-    type: String,
+    type: Boolean,
     required: false,
   },
   bathroomStallCount: {
@@ -90,11 +90,11 @@ const gasStationSchema = new Schema<IGasStation>({
     required: false,
   },
   seatingAvailable: {
-    type: String,
+    type: Boolean,
     required: false,
   },
   greenspaceAvailable: {
-    type: String,
+    type: Boolean,
     required: false,
   },
   dailyCustomers: {
