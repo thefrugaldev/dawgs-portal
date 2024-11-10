@@ -4,24 +4,24 @@ export interface IGasStation {
   _id: string;
   stationName: string;
   stationAddress: string;
-  lat: Number;
-  long: Number;
-  gasPumps: Number;
-  dieselPumps: Number;
-  ecLvl2: Number;
-  ecFastDC: Number;
-  dcfc: Number;
-  ecCount: Number;
-  chargeCapacity: Number;
-  shopCount: Number;
-  shopNames: String;
+  lat: number;
+  long: number;
+  gasPumps: number;
+  dieselPumps: number;
+  ecLvl2: number;
+  ecFastDC: number;
+  dcfc: number;
+  ecCount: number;
+  chargeCapacity: number;
+  shopCount: number;
+  shopNames: string;
   truckStop: boolean;
-  bathroomStallCount: Number;
+  bathroomStallCount: number;
   seatingAvailable: boolean;
   greenspaceAvailable: boolean;
-  dailyCustomers: Number;
-  imageLink: String;
-  notes: String;
+  dailyCustomers: number;
+  imageLink: string;
+  notes: string;
 }
 
 const gasStationSchema = new Schema<IGasStation>({
@@ -108,7 +108,7 @@ const gasStationSchema = new Schema<IGasStation>({
   notes: {
     type: String,
     required: false,
-  }
+  },
 });
 
 export default models.gasstations || model('gasstations', gasStationSchema);
