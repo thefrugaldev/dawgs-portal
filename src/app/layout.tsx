@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { UserProvider } from '@auth0/nextjs-auth0/client';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
@@ -19,15 +19,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      {/* <Script
-        async={true}
-        // src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}&libraries=geocoder,places`}
-        src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}&loading=async&libraries=places`}
-      /> */}
-      <body className={inter.className}>
-        <Navbar />
-        {children}
-      </body>
+      <UserProvider>
+        <body className={inter.className}>
+          <Navbar />
+          {children}
+        </body>
+      </UserProvider>
     </html>
   );
 }
