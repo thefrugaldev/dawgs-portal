@@ -105,8 +105,6 @@ const Table = () => {
                   </div>
                 </td>
                 <td className="px-3 py-1 border">{item.createdDate.toString()}</td>
-
-                
               </tr>
             ))}
           </tbody>
