@@ -4,11 +4,12 @@ import React from 'react';
 import { IGasStation } from '../../models/gas-station';
 import * as XLSX from 'xlsx';
 import { Button } from '@/components/ui/button';
+import useGasStations from '@/queries/useGasStations';
 // import useGasStations from '@/queries/useGasStations';
 
 export function DownloadButton() {
   // Define the state with the correct type
-  // const { data } = useGasStations();
+  const { data } = useGasStations();
 
   // useEffect(() => {
   //   async function fetchData() {
@@ -28,12 +29,12 @@ export function DownloadButton() {
   };
 
   function handleClick() {
-    // if (!data) {
-    //   console.warn('No data for excel');
-    //   return;
-    // }
+    if (!data) {
+      console.warn('No data for excel');
+      return;
+    }
 
-    downloadExcel([]);
+    downloadExcel(data);
   }
 
   return <Button onClick={handleClick}>Download As Excel</Button>;

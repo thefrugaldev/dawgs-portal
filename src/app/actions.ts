@@ -6,8 +6,7 @@ import GasStation, { IGasStation } from '../models/gas-station';
 const addGasStation = async (gasStation: IGasStation) => {
   await connectToDatabase();
 
-  const gasStations = await GasStation.create(gasStation);
-  return gasStations;
+  await GasStation.create(gasStation);
 };
 
 export { addGasStation };

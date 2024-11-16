@@ -20,6 +20,8 @@ import ECInfoFormGroup from './form-groups/ec-info';
 import AmmenitiesInfoFormGroup from './form-groups/ammenities-info';
 import { DialogFooter } from '../ui/dialog';
 import { Button } from '../ui/button';
+import useGasStations from '@/queries/useGasStations';
+import { addGasStation } from '@/app/actions';
 
 export const formSchema = z.object({
   _id: z.string(),
@@ -45,7 +47,13 @@ export const formSchema = z.object({
   notes: z.string(),
 });
 
-const DatabaseForm = () => {
+interface DatabaseFormProps {
+  onFormSubmit: () => void;
+}
+
+const DatabaseForm = ({ onFormSubmit }: DatabaseFormProps) => {
+  const { refetch } = useGasStations();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -81,18 +89,20 @@ const DatabaseForm = () => {
     );
   }, [form.formState.errors]);
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
     const {
       formState: { errors },
     } = form;
-    if (errors) {
+    if (Object.keys(errors).length) {
       console.error(errors);
 
       return;
     }
 
     console.log('No errors, creating gas station.', values);
-    // await addGasStation()
+    await addGasStation(values);
+    refetch();
+    onFormSubmit();
   };
 
   return (
