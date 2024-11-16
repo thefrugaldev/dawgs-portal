@@ -1,7 +1,5 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
-import { formSchema } from '../form';
-import { zodResolver } from '@hookform/resolvers/zod';
+import { useFormContext } from 'react-hook-form';
 import {
   FormControl,
   FormField,
@@ -10,17 +8,14 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { z } from 'zod';
 
 const AreaFormGroup = () => {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-  });
+  const { control } = useFormContext();
 
   return (
     <div className="flex justify-between flex-wrap gap-1">
       <FormField
-        control={form.control}
+        control={control}
         name="lat"
         render={({ field }) => (
           <FormItem>
@@ -33,7 +28,7 @@ const AreaFormGroup = () => {
         )}
       />
       <FormField
-        control={form.control}
+        control={control}
         name="long"
         render={({ field }) => (
           <FormItem>

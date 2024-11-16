@@ -1,7 +1,6 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
-import { formSchema } from '../form';
-import { zodResolver } from '@hookform/resolvers/zod';
+import { useFormContext } from 'react-hook-form';
+
 import {
   FormControl,
   FormField,
@@ -10,17 +9,14 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { z } from 'zod';
 
 const ECInfoFormGroup = () => {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-  });
+  const { control } = useFormContext();
 
   return (
     <div className="grid grid-cols-4 gap-2">
       <FormField
-        control={form.control}
+        control={control}
         name="ecLvl2"
         render={({ field }) => (
           <FormItem>
@@ -33,7 +29,7 @@ const ECInfoFormGroup = () => {
         )}
       />
       <FormField
-        control={form.control}
+        control={control}
         name="ecFastDC"
         render={({ field }) => (
           <FormItem>
@@ -46,7 +42,7 @@ const ECInfoFormGroup = () => {
         )}
       />
       <FormField
-        control={form.control}
+        control={control}
         name="dcfc"
         render={({ field }) => (
           <FormItem>
@@ -59,7 +55,7 @@ const ECInfoFormGroup = () => {
         )}
       />
       <FormField
-        control={form.control}
+        control={control}
         name="chargeCapacity"
         render={({ field }) => (
           <FormItem>

@@ -115,6 +115,7 @@ const Table = ({ data }: any) => {
 
 export default async function App() {
   const data = await getGasStations();
+  const gasStations = JSON.parse(data);
 
   return (
     <div className="p-5">
@@ -138,7 +139,7 @@ export default async function App() {
         <DatabaseFormDialog />
         <DownloadButton />
       </div>
-      <Table data={data} />
+      <Table data={gasStations} />
     </div>
   );
 }

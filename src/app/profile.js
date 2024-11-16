@@ -21,7 +21,7 @@ const Profile = () => {
   return (
     <div>
       <h1>Profile</h1>
-      <pre>{JSON.stringify(user, null, 2)}</pre>
+      {/* <pre>{JSON.sctringify(user, null, 2)}</pre> */}
     </div>
   );
 };
