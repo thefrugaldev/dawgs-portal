@@ -50,6 +50,7 @@ const Table = () => {
               </th>
               <th className="w-1/8 px-3 py-1 border truncate">Image(s)</th>
               <th className="w-[10px] px-3 py-1 border truncate">Notes</th>
+              <th className="w-[10px] px-3 py-1 border truncate">Date Created</th>
             </tr>
           </thead>
           <tbody>
@@ -103,6 +104,9 @@ const Table = () => {
                     {item.notes}
                   </div>
                 </td>
+                <td className="px-3 py-1 border">{item.createdDate.toString()}</td>
+
+                
               </tr>
             ))}
           </tbody>
