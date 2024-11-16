@@ -1,5 +1,4 @@
 'use client';
-import { IGasStation } from '@/models/gas-station';
 import { useQuery } from '@tanstack/react-query';
 
 const useGasStations = () => {

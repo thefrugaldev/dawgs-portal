@@ -4,7 +4,7 @@ import useGasStations from '@/queries/useGasStations';
 import React from 'react';
 
 const Table = () => {
-  const { data, isLoading, isError } = useGasStations();
+  const { data, isLoading } = useGasStations();
 
   if (isLoading) return <p>Loading...</p>;
 
