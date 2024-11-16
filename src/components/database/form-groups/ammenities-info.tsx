@@ -1,7 +1,5 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
-import { formSchema } from '../form';
-import { zodResolver } from '@hookform/resolvers/zod';
+import { useFormContext } from 'react-hook-form';
 import {
   FormControl,
   FormField,
@@ -10,20 +8,17 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { z } from 'zod';
 import { Textarea } from '@/components/ui/textarea';
 import { Switch } from '@/components/ui/switch';
 
 const AmmenitiesInfoFormGroup = () => {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-  });
+  const { control } = useFormContext();
 
   return (
     <>
       <div className="grid grid-cols-3 gap-2">
         <FormField
-          control={form.control}
+          control={control}
           name="shopCount"
           render={({ field }) => (
             <FormItem>
@@ -36,7 +31,7 @@ const AmmenitiesInfoFormGroup = () => {
           )}
         />
         <FormField
-          control={form.control}
+          control={control}
           name="bathroomStallCount"
           render={({ field }) => (
             <FormItem>
@@ -49,7 +44,7 @@ const AmmenitiesInfoFormGroup = () => {
           )}
         />
         <FormField
-          control={form.control}
+          control={control}
           name="dailyCustomers"
           render={({ field }) => (
             <FormItem>
@@ -65,7 +60,7 @@ const AmmenitiesInfoFormGroup = () => {
 
       <div className="grid grid-cols-4 gap-2">
         <FormField
-          control={form.control}
+          control={control}
           name="truckStop"
           render={({ field }) => (
             <FormItem>
@@ -81,7 +76,7 @@ const AmmenitiesInfoFormGroup = () => {
           )}
         />
         <FormField
-          control={form.control}
+          control={control}
           name="seatingAvailable"
           render={({ field }) => (
             <FormItem>
@@ -97,7 +92,7 @@ const AmmenitiesInfoFormGroup = () => {
           )}
         />
         <FormField
-          control={form.control}
+          control={control}
           name="greenspaceAvailable"
           render={({ field }) => (
             <FormItem>
@@ -113,7 +108,7 @@ const AmmenitiesInfoFormGroup = () => {
           )}
         />
         <FormField
-          control={form.control}
+          control={control}
           name="imageLink"
           // eslint-disable-next-line no-unused-vars
           render={({ field }) => (
@@ -130,7 +125,7 @@ const AmmenitiesInfoFormGroup = () => {
 
       <div>
         <FormField
-          control={form.control}
+          control={control}
           name="shopNames"
           render={({ field }) => (
             <FormItem>
@@ -146,7 +141,7 @@ const AmmenitiesInfoFormGroup = () => {
           )}
         />
         <FormField
-          control={form.control}
+          control={control}
           name="notes"
           render={({ field }) => (
             <FormItem>

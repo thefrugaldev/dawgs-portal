@@ -1,9 +1,10 @@
+'use client';
+
 import React from 'react';
 import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -28,9 +29,6 @@ const DatabaseFormDialog = () => {
             </DialogDescription>
           </DialogHeader>
           <DatabaseForm />
-          <DialogFooter>
-            <Button type="submit">Save changes</Button>
-          </DialogFooter>
         </ScrollArea>
       </DialogContent>
     </Dialog>
