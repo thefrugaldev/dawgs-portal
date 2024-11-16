@@ -1,9 +1,10 @@
 import React from 'react';
-import { UserProvider } from '@auth0/nextjs-auth0/client';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { Navbar } from '@/components/navbar/navbar';
+
+import Providers from './providers';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,12 +20,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <UserProvider>
-        <body className={inter.className}>
+      <body className={inter.className}>
+        <Providers>
           <Navbar />
           {children}
-        </body>
-      </UserProvider>
+        </Providers>
+      </body>
     </html>
   );
 }

@@ -4,8 +4,8 @@ export interface IGasStation {
   _id: string;
   stationName: string;
   stationAddress: string;
-  lat: number;
-  long: number;
+  lat: string;
+  long: string;
   gasPumps: number;
   dieselPumps: number;
   ecLvl2: number;
@@ -38,11 +38,11 @@ const gasStationSchema = new Schema<IGasStation>({
     required: false,
   },
   lat: {
-    type: Number,
+    type: String,
     required: false,
   },
   long: {
-    type: Number,
+    type: String,
     required: false,
   },
   gasPumps: {

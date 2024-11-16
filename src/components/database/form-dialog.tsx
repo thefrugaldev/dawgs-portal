@@ -15,8 +15,10 @@ import DatabaseForm from './form';
 import { ScrollArea } from '../ui/scroll-area';
 
 const DatabaseFormDialog = () => {
+  const [open, setOpen] = React.useState(false);
+
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button>Add Gas Station</Button>
       </DialogTrigger>
@@ -28,7 +30,7 @@ const DatabaseFormDialog = () => {
               Fill in the form below to save a new gas station to the database
             </DialogDescription>
           </DialogHeader>
-          <DatabaseForm />
+          <DatabaseForm onFormSubmit={() => setOpen(false)} />
         </ScrollArea>
       </DialogContent>
     </Dialog>
