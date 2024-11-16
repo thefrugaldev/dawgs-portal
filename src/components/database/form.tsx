@@ -82,9 +82,17 @@ const DatabaseForm = () => {
   }, [form.formState.errors]);
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+    const {
+      formState: { errors },
+    } = form;
+    if (errors) {
+      console.error(errors);
+
+      return;
+    }
+
+    console.log('No errors, creating gas station.', values);
+    // await addGasStation()
   };
 
   return (
