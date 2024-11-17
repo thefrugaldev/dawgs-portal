@@ -112,7 +112,7 @@ const gasStationSchema = new Schema<IGasStation>({
   },
   createdDate: {
     type: Date,
-    required: false,
+    required: true,
   },
 });
 
