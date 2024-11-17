@@ -1,6 +1,4 @@
-import { timeStamp } from 'console';
 import { Schema, model, models } from 'mongoose';
-import { date } from 'zod';
 
 export interface IGasStation {
   _id: string;
