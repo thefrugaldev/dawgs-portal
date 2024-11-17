@@ -45,6 +45,7 @@ export const formSchema = z.object({
   dailyCustomers: z.coerce.number(),
   imageLink: z.string(),
   notes: z.string(),
+  createdDate: z.date(),
 });
 
 interface DatabaseFormProps {
@@ -78,6 +79,7 @@ const DatabaseForm = ({ onFormSubmit }: DatabaseFormProps) => {
       dailyCustomers: 0,
       imageLink: '',
       notes: '',
+      createdDate: new Date(),
     },
   });
 

@@ -22,6 +22,7 @@ export interface IGasStation {
   dailyCustomers: number;
   imageLink: string;
   notes: string;
+  createdDate: Date;
 }
 
 const gasStationSchema = new Schema<IGasStation>({
@@ -108,6 +109,10 @@ const gasStationSchema = new Schema<IGasStation>({
   notes: {
     type: String,
     required: false,
+  },
+  createdDate: {
+    type: Date,
+    required: true,
   },
 });
 
