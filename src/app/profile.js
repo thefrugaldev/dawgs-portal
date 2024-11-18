@@ -1,5 +1,5 @@
 // profile.js
-
+/*
 import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 import { useEffect, useState } from 'react';
 
@@ -27,3 +27,4 @@ const Profile = () => {
 };
 
 export default withPageAuthRequired(Profile);
+*/
