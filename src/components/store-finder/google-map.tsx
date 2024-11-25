@@ -36,8 +36,8 @@ const GoogleMap = () => {
 
     const fetchRoute = async () => {
       const route = await new routesLib.DirectionsService().route({
-        origin: '5636 Hwy 53, Braselton, GA 30517',
-        destination: '200 W Fairplay Blvd, Fair Play, SC 29643',
+        origin: '30769 US-441, Commerce, GA 30529',
+        destination: '13 Lakeside Cir, Fair Play, SC 29643',
         travelMode: 'DRIVING' as any,
       });
 
