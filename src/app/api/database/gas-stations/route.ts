@@ -6,7 +6,7 @@ export async function GET() {
 
   // console.log('LOOKING FOR GAS STATIONS');
 
-  const gasStations = await GasStation.find();
+  const gasStations = await GasStation.find().sort({ createdDate: -1 });
   // const parsed = JSON.parse(JSON.stringify(gasStations));
 
   // console.log('GAS STATIONS', parsed);

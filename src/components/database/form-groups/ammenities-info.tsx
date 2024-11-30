@@ -10,6 +10,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Switch } from '@/components/ui/switch';
+import ImageUploadField from './image-upload-field';
 
 const AmmenitiesInfoFormGroup = () => {
   const { control } = useFormContext();
@@ -107,20 +108,7 @@ const AmmenitiesInfoFormGroup = () => {
             </FormItem>
           )}
         />
-        <FormField
-          control={control}
-          name="imageLink"
-          // eslint-disable-next-line no-unused-vars
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Upload Image</FormLabel>
-              <FormControl>
-                <Input id="picture" type="file" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        <ImageUploadField />
       </div>
 
       <div>

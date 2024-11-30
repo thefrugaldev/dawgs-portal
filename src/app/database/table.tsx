@@ -1,6 +1,7 @@
 'use client';
 import { IGasStation } from '@/models/gas-station';
 import useGasStations from '@/queries/useGasStations';
+import { Image } from 'lucide-react';
 import React from 'react';
 
 const Table = () => {
@@ -50,7 +51,9 @@ const Table = () => {
               </th>
               <th className="w-1/8 px-3 py-1 border truncate">Image(s)</th>
               <th className="w-[10px] px-3 py-1 border truncate">Notes</th>
-              <th className="w-[10px] px-3 py-1 border truncate">Date Created</th>
+              <th className="w-[10px] px-3 py-1 border truncate">
+                Date Created
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -96,7 +99,7 @@ const Table = () => {
                     target="_blank"
                     className="text-blue-600 hover:underline"
                   >
-                    Image_1
+                    <Image />
                   </a>
                 </td>
                 <td className="px-3 py-1 border">
@@ -104,7 +107,9 @@ const Table = () => {
                     {item.notes}
                   </div>
                 </td>
-                <td className="px-3 py-1 border">{item.createdDate.toString()}</td>
+                <td className="px-3 py-1 border">
+                  {item.createdDate.toString()}
+                </td>
               </tr>
             ))}
           </tbody>
