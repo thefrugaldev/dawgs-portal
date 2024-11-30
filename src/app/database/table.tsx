@@ -3,6 +3,7 @@ import { IGasStation } from '@/models/gas-station';
 import useGasStations from '@/queries/useGasStations';
 import { Image } from 'lucide-react';
 import React from 'react';
+import dayjs from 'dayjs';
 
 const Table = () => {
   const { data, isLoading } = useGasStations();
@@ -108,7 +109,7 @@ const Table = () => {
                   </div>
                 </td>
                 <td className="px-3 py-1 border">
-                  {item.createdDate.toString()}
+                  {dayjs(item.createdDate).format('M/DD/YYYY')}
                 </td>
               </tr>
             ))}
