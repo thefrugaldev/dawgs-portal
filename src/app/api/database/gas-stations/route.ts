@@ -1,6 +1,8 @@
 import connectToDatabase from '@/lib/db';
 import GasStation from '@/models/gas-station';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   await connectToDatabase();
 
