@@ -58,6 +58,9 @@ export default async function App() {
           <DatabaseFormDialog />
           <DownloadButton />
         </div>
+        <div>
+          <p>*click a row to edit the station data*</p>
+        </div>
         <Table />
       </div>
     </HydrationBoundary>
