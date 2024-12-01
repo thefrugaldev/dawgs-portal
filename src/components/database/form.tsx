@@ -22,6 +22,7 @@ import { DialogFooter } from '../ui/dialog';
 import { Button } from '../ui/button';
 import useGasStations from '@/queries/useGasStations';
 import { addGasStation } from '@/app/actions';
+import { useRouter } from 'next/navigation';
 
 export const formSchema = z.object({
   _id: z.string(),
@@ -54,6 +55,7 @@ interface DatabaseFormProps {
 
 const DatabaseForm = ({ onFormSubmit }: DatabaseFormProps) => {
   const { refetch } = useGasStations();
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -104,6 +106,7 @@ const DatabaseForm = ({ onFormSubmit }: DatabaseFormProps) => {
     console.log('No errors, creating gas station.', values);
     await addGasStation(values);
     refetch();
+    router.refresh();
     onFormSubmit();
   };
 
