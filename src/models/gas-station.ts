@@ -23,6 +23,7 @@ export interface IGasStation {
   imageLink: string;
   notes: string;
   createdDate: Date;
+  updatedBy: string;
 }
 
 const gasStationSchema = new Schema<IGasStation>({
@@ -114,6 +115,10 @@ const gasStationSchema = new Schema<IGasStation>({
     type: Date,
     required: true,
   },
+  updatedBy: {
+    type: String,
+    required: false,
+  }
 });
 
 export default models.gasstations || model('gasstations', gasStationSchema);

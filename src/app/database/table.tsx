@@ -53,7 +53,10 @@ const Table = () => {
               <th className="w-1/8 px-3 py-1 border truncate">Image(s)</th>
               <th className="w-[10px] px-3 py-1 border truncate">Notes</th>
               <th className="w-[10px] px-3 py-1 border truncate">
-                Date Created
+                Updated Date
+              </th>
+              <th className="w-1/8 px-3 py-1 border truncate">
+                Updated By
               </th>
             </tr>
           </thead>
@@ -110,6 +113,9 @@ const Table = () => {
                 </td>
                 <td className="px-3 py-1 border">
                   {dayjs(item.createdDate).format('M/DD/YYYY')}
+                </td>
+                <td className="px-3 py-1 border">
+                {item.updatedBy}
                 </td>
               </tr>
             ))}
