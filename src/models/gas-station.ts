@@ -118,7 +118,7 @@ const gasStationSchema = new Schema<IGasStation>({
   updatedBy: {
     type: String,
     required: false,
-  },
+  }
 });
 
 export default models.gasstations || model('gasstations', gasStationSchema);

@@ -47,6 +47,7 @@ export const formSchema = z.object({
   imageLink: z.string(),
   notes: z.string(),
   createdDate: z.date(),
+  updatedBy: z.string(),
 });
 
 interface DatabaseFormProps {
@@ -82,6 +83,7 @@ const DatabaseForm = ({ onFormSubmit }: DatabaseFormProps) => {
       imageLink: '',
       notes: '',
       createdDate: new Date(),
+      updatedBy: '',
     },
   });
 
