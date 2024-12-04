@@ -5,7 +5,12 @@ import { Image } from 'lucide-react';
 import React from 'react';
 import dayjs from 'dayjs';
 
-const Table = () => {
+interface TableProps {
+  // eslint-disable-next-line no-unused-vars
+  onRowClick: (gasStation: IGasStation) => void;
+}
+
+const Table = ({ onRowClick }: TableProps) => {
   const { data, isLoading } = useGasStations();
 
   if (isLoading) return <p>Loading...</p>;
@@ -55,16 +60,15 @@ const Table = () => {
               <th className="w-[10px] px-3 py-1 border truncate">
                 Updated Date
               </th>
-              <th className="w-1/8 px-3 py-1 border truncate">
-                Updated By
-              </th>
+              <th className="w-1/8 px-3 py-1 border truncate">Updated By</th>
             </tr>
           </thead>
           <tbody>
             {data.map((item: IGasStation) => (
               <tr
-                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
+                className="bg-white cursor-pointer border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
                 key={item._id}
+                onClick={() => onRowClick(item)}
               >
                 <td className="px-3 py-1 border whitespace-nowrap">
                   {item.stationName}
@@ -114,9 +118,7 @@ const Table = () => {
                 <td className="px-3 py-1 border">
                   {dayjs(item.createdDate).format('M/DD/YYYY')}
                 </td>
-                <td className="px-3 py-1 border">
-                {item.updatedBy}
-                </td>
+                <td className="px-3 py-1 border">{item.updatedBy}</td>
               </tr>
             ))}
           </tbody>

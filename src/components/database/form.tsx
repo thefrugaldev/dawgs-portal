@@ -23,6 +23,8 @@ import { Button } from '../ui/button';
 import useGasStations from '@/queries/useGasStations';
 import { addGasStation } from '@/app/actions';
 import { useRouter } from 'next/navigation';
+import { IGasStation } from '@/models/gas-station';
+import { useUser } from '@auth0/nextjs-auth0/client';
 
 export const formSchema = z.object({
   _id: z.string(),
@@ -52,39 +54,50 @@ export const formSchema = z.object({
 
 interface DatabaseFormProps {
   onFormSubmit: () => void;
+  selectedGasStation?: IGasStation;
 }
 
-const DatabaseForm = ({ onFormSubmit }: DatabaseFormProps) => {
+const DatabaseForm = ({
+  onFormSubmit,
+  selectedGasStation,
+}: DatabaseFormProps) => {
   const { refetch } = useGasStations();
   const router = useRouter();
+  const { user } = useUser();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      _id: uuidv4(),
-      stationName: '',
-      stationAddress: '',
-      lat: '',
-      long: '',
-      gasPumps: 0,
-      dieselPumps: 0,
-      ecLvl2: 0,
-      ecFastDC: 0,
-      dcfc: 0,
-      ecCount: 0,
-      chargeCapacity: 0,
-      shopCount: 0,
-      shopNames: '',
-      truckStop: true,
-      bathroomStallCount: 0,
-      seatingAvailable: true,
-      greenspaceAvailable: true,
-      dailyCustomers: 0,
-      imageLink: '',
-      notes: '',
-      createdDate: new Date(),
-      updatedBy: '',
-    },
+    defaultValues: selectedGasStation
+      ? {
+          ...selectedGasStation,
+          updatedBy: user?.email!,
+          createdDate: new Date(selectedGasStation.createdDate),
+        }
+      : {
+          _id: uuidv4(),
+          stationName: '',
+          stationAddress: '',
+          lat: '',
+          long: '',
+          gasPumps: 0,
+          dieselPumps: 0,
+          ecLvl2: 0,
+          ecFastDC: 0,
+          dcfc: 0,
+          ecCount: 0,
+          chargeCapacity: 0,
+          shopCount: 0,
+          shopNames: '',
+          truckStop: true,
+          bathroomStallCount: 0,
+          seatingAvailable: true,
+          greenspaceAvailable: true,
+          dailyCustomers: 0,
+          imageLink: '',
+          notes: '',
+          createdDate: new Date(),
+          updatedBy: user?.email!,
+        },
   });
 
   useEffect(() => {
