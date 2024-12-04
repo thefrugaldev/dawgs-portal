@@ -71,7 +71,7 @@ const DatabaseForm = ({
       ? {
           ...selectedGasStation,
           updatedBy: user?.email!,
-          createdDate: new Date(selectedGasStation.createdDate),
+          createdDate: new Date(),
         }
       : {
           _id: uuidv4(),
