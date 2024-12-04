@@ -29,12 +29,12 @@ const Table = ({ onRowClick }: TableProps) => {
         >
           <thead className="text-xs text-gray-700 bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th className="w-1/12 px-3 py-1 border truncate">Station Name</th>
+            <th className="w-1/12 px-3 py-1 border truncate">Edit</th>
               <th className="w-1/12 px-3 py-1 border truncate">
-                Station Address
+                Station Name
               </th>
-              <th className="w-1/12 px-3 py-1 border truncate">Area</th>
-              <th className="w-1/12 px-3 py-1 border truncate">Lat/Long</th>
+              <th className="w-1/12 px-3 py-1 border truncate">Station Address</th>
+              <th className="w-1/12 px-3 py-1 border truncate">Location</th>
               <th className="w-1/8 px-3 py-1 border truncate">Gas Pumps</th>
               <th className="w-1/8 px-3 py-1 border truncate">Diesel Pumps</th>
               <th className="w-1/8 px-3 py-1 border truncate">EC - Lvl 2</th>
