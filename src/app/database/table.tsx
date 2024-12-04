@@ -1,11 +1,17 @@
+/* eslint-disable jsx-a11y/alt-text */
 'use client';
 import { IGasStation } from '@/models/gas-station';
 import useGasStations from '@/queries/useGasStations';
-import { Image } from 'lucide-react';
+import { Ban, Check, Image, Pencil } from 'lucide-react';
 import React from 'react';
 import dayjs from 'dayjs';
 
-const Table = () => {
+interface TableProps {
+  // eslint-disable-next-line no-unused-vars
+  onRowClick: (gasStation: IGasStation) => void;
+}
+
+const Table = ({ onRowClick }: TableProps) => {
   const { data, isLoading } = useGasStations();
 
   if (isLoading) return <p>Loading...</p>;
@@ -28,6 +34,7 @@ const Table = () => {
                 Station Address
               </th>
               <th className="w-1/12 px-3 py-1 border truncate">Area</th>
+              <th className="w-1/12 px-3 py-1 border truncate">Lat/Long</th>
               <th className="w-1/8 px-3 py-1 border truncate">Gas Pumps</th>
               <th className="w-1/8 px-3 py-1 border truncate">Diesel Pumps</th>
               <th className="w-1/8 px-3 py-1 border truncate">EC - Lvl 2</th>
@@ -55,17 +62,21 @@ const Table = () => {
               <th className="w-[10px] px-3 py-1 border truncate">
                 Updated Date
               </th>
-              <th className="w-1/8 px-3 py-1 border truncate">
-                Updated By
-              </th>
+              <th className="w-1/8 px-3 py-1 border truncate">Updated By</th>
             </tr>
           </thead>
           <tbody>
             {data.map((item: IGasStation) => (
               <tr
-                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
+                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 "
                 key={item._id}
               >
+                <td className="flex justify-center">
+                  <Pencil
+                    className="cursor-pointer"
+                    onClick={() => onRowClick(item)}
+                  />
+                </td>
                 <td className="px-3 py-1 border whitespace-nowrap">
                   {item.stationName}
                 </td>
@@ -88,23 +99,27 @@ const Table = () => {
                     {item.shopNames}
                   </div>
                 </td>
-                <td className="px-3 py-1 border">{String(item.truckStop)}</td>
+                <td className="px-3 py-1 border">
+                  {item.truckStop ? <Check /> : <Ban />}
+                </td>
                 <td className="px-3 py-1 border">{item.bathroomStallCount}</td>
                 <td className="px-3 py-1 border">
-                  {String(item.seatingAvailable)}
+                  {item.seatingAvailable ? <Check /> : <Ban />}
                 </td>
                 <td className="px-3 py-1 border">
-                  {String(item.greenspaceAvailable)}
+                  {item.greenspaceAvailable ? <Check /> : <Ban />}
                 </td>
                 <td className="px-3 py-1 border">{item.dailyCustomers}</td>
                 <td className="px-3 py-1 border">
-                  <a
-                    href={item.imageLink}
-                    target="_blank"
-                    className="text-blue-600 hover:underline"
-                  >
-                    <Image />
-                  </a>
+                  {item.imageLink ? (
+                    <a
+                      href={item.imageLink}
+                      target="_blank"
+                      className="text-blue-600 hover:underline"
+                    >
+                      <Image />
+                    </a>
+                  ) : null}
                 </td>
                 <td className="px-3 py-1 border">
                   <div className="w-36 text-ellipsis overflow-hidden whitespace-nowrap">
@@ -114,9 +129,7 @@ const Table = () => {
                 <td className="px-3 py-1 border">
                   {dayjs(item.createdDate).format('M/DD/YYYY')}
                 </td>
-                <td className="px-3 py-1 border">
-                {item.updatedBy}
-                </td>
+                <td className="px-3 py-1 border">{item.updatedBy}</td>
               </tr>
             ))}
           </tbody>

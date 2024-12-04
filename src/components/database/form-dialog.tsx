@@ -13,12 +13,22 @@ import { Button } from '../ui/button';
 
 import DatabaseForm from './form';
 import { ScrollArea } from '../ui/scroll-area';
+import { IGasStation } from '@/models/gas-station';
 
-const DatabaseFormDialog = () => {
-  const [open, setOpen] = React.useState(false);
+interface DatabaseFormDialogProps {
+  selectedGasStation?: IGasStation;
+  // eslint-disable-next-line no-unused-vars
+  onOpenChange: (open: boolean) => void;
+  isOpen: boolean;
+}
 
+const DatabaseFormDialog = ({
+  selectedGasStation,
+  onOpenChange,
+  isOpen,
+}: DatabaseFormDialogProps) => {
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogTrigger asChild>
         <Button>Add Gas Station</Button>
       </DialogTrigger>
@@ -30,7 +40,10 @@ const DatabaseFormDialog = () => {
               Fill in the form below to save a new gas station to the database
             </DialogDescription>
           </DialogHeader>
-          <DatabaseForm onFormSubmit={() => setOpen(false)} />
+          <DatabaseForm
+            selectedGasStation={selectedGasStation}
+            onFormSubmit={() => onOpenChange(false)}
+          />
         </ScrollArea>
       </DialogContent>
     </Dialog>
