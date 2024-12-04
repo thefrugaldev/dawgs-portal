@@ -2,7 +2,7 @@
 'use client';
 import { IGasStation } from '@/models/gas-station';
 import useGasStations from '@/queries/useGasStations';
-import { Image, Pencil } from 'lucide-react';
+import { Ban, Check, Image, Pencil } from 'lucide-react';
 import React from 'react';
 import dayjs from 'dayjs';
 
@@ -34,6 +34,7 @@ const Table = ({ onRowClick }: TableProps) => {
                 Station Address
               </th>
               <th className="w-1/12 px-3 py-1 border truncate">Area</th>
+              <th className="w-1/12 px-3 py-1 border truncate">Lat/Long</th>
               <th className="w-1/8 px-3 py-1 border truncate">Gas Pumps</th>
               <th className="w-1/8 px-3 py-1 border truncate">Diesel Pumps</th>
               <th className="w-1/8 px-3 py-1 border truncate">EC - Lvl 2</th>
@@ -98,13 +99,15 @@ const Table = ({ onRowClick }: TableProps) => {
                     {item.shopNames}
                   </div>
                 </td>
-                <td className="px-3 py-1 border">{String(item.truckStop)}</td>
+                <td className="px-3 py-1 border">
+                  {item.truckStop ? <Check /> : <Ban />}
+                </td>
                 <td className="px-3 py-1 border">{item.bathroomStallCount}</td>
                 <td className="px-3 py-1 border">
-                  {String(item.seatingAvailable)}
+                  {item.seatingAvailable ? <Check /> : <Ban />}
                 </td>
                 <td className="px-3 py-1 border">
-                  {String(item.greenspaceAvailable)}
+                  {item.greenspaceAvailable ? <Check /> : <Ban />}
                 </td>
                 <td className="px-3 py-1 border">{item.dailyCustomers}</td>
                 <td className="px-3 py-1 border">
