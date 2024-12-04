@@ -2,7 +2,7 @@
 'use client';
 import { IGasStation } from '@/models/gas-station';
 import useGasStations from '@/queries/useGasStations';
-import { Image } from 'lucide-react';
+import { Image, Pencil } from 'lucide-react';
 import React from 'react';
 import dayjs from 'dayjs';
 
@@ -67,10 +67,15 @@ const Table = ({ onRowClick }: TableProps) => {
           <tbody>
             {data.map((item: IGasStation) => (
               <tr
-                className="bg-white cursor-pointer border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
+                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 "
                 key={item._id}
-                onClick={() => onRowClick(item)}
               >
+                <td className="flex justify-center">
+                  <Pencil
+                    className="cursor-pointer"
+                    onClick={() => onRowClick(item)}
+                  />
+                </td>
                 <td className="px-3 py-1 border whitespace-nowrap">
                   {item.stationName}
                 </td>
@@ -103,13 +108,15 @@ const Table = ({ onRowClick }: TableProps) => {
                 </td>
                 <td className="px-3 py-1 border">{item.dailyCustomers}</td>
                 <td className="px-3 py-1 border">
-                  <a
-                    href={item.imageLink}
-                    target="_blank"
-                    className="text-blue-600 hover:underline"
-                  >
-                    <Image />
-                  </a>
+                  {item.imageLink ? (
+                    <a
+                      href={item.imageLink}
+                      target="_blank"
+                      className="text-blue-600 hover:underline"
+                    >
+                      <Image />
+                    </a>
+                  ) : null}
                 </td>
                 <td className="px-3 py-1 border">
                   <div className="w-36 text-ellipsis overflow-hidden whitespace-nowrap">
