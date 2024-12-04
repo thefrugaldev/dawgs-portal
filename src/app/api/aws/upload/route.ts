@@ -5,7 +5,9 @@ import { S3Client } from '@aws-sdk/client-s3';
 import { v4 as uuidv4 } from 'uuid';
 
 export async function POST(request: Request) {
-  const { contentType } = await request.json();
+  const { contentType, imageId } = await request.json();
+
+  const key = imageId ? imageId : undefined;
 
   try {
     // const client = new S3Client({ region: process.env.AWS_REGION });
@@ -20,7 +22,7 @@ export async function POST(request: Request) {
 
     const post = await createPresignedPost(client, {
       Bucket: process.env.AWS_BUCKET_NAME as string,
-      Key: uuidv4(),
+      Key: key ?? uuidv4(),
       Conditions: [
         ['content-length-range', 0, 10485760], // up to 10 MB
         ['starts-with', '$Content-Type', contentType],

@@ -12,7 +12,7 @@ import React, { ChangeEvent, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 
 const ImageUploadField = () => {
-  const { control, setValue } = useFormContext();
+  const { control, setValue, getValues } = useFormContext();
   const [uploading, setUploading] = useState<boolean>(false);
   const [uploaded, setUploaded] = useState<boolean>(false);
 
@@ -29,12 +29,19 @@ const ImageUploadField = () => {
 
     setUploading(true);
 
+    const imageLink = getValues('imageLink') as string;
+    const imageId = imageLink?.substring(imageLink?.lastIndexOf('/') + 1);
+
     const response = await fetch('/api/aws/upload', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ filename: file.name, contentType: file.type }),
+      body: JSON.stringify({
+        filename: file.name,
+        contentType: file.type,
+        imageId,
+      }),
     });
 
     if (response.ok) {

@@ -18,13 +18,11 @@ const DatabaseContainer = () => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
 
   const handleOpenChange = (open: boolean) => {
-    console.log('Open changed: ', open);
     setSelectedGasStation(undefined);
     setModalOpen(open);
   };
 
   useEffect(() => {
-    console.log('Gas Station Edited: ', selectedGasStation);
     !!selectedGasStation && setModalOpen(true);
   }, [selectedGasStation]);
 

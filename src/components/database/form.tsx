@@ -164,7 +164,6 @@ const DatabaseForm = ({
           <DialogFooter>
             <Button type="submit">Save changes</Button>
           </DialogFooter>
-          {/* <Button type="submit">Submit</Button> */}
         </form>
       </Form>
     </FormProvider>

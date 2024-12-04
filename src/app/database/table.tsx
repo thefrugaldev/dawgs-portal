@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 'use client';
 import { IGasStation } from '@/models/gas-station';
 import useGasStations from '@/queries/useGasStations';
