@@ -1,13 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { Input } from '../ui/input';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@radix-ui/react-select';
 import DatabaseFormDialog from './form-dialog';
 import { DownloadButton } from '../ui/download';
 import { IGasStation } from '@/models/gas-station';
@@ -34,17 +27,6 @@ const DatabaseContainer = () => {
           className="max-w-sm"
           placeholder="Find a Gas Station..."
         />
-        <Select>
-          <SelectTrigger className="w-[280px]">
-            <SelectValue placeholder="Sort" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="name">Station Name</SelectItem>
-            <SelectItem value="address">Address</SelectItem>
-            <SelectItem value="pumps">Number of Pumps</SelectItem>
-            <SelectItem value="charge">Charge Capacity</SelectItem>
-          </SelectContent>
-        </Select>
         <DatabaseFormDialog
           isOpen={modalOpen}
           onOpenChange={handleOpenChange}

@@ -26,7 +26,7 @@ const SearchInput = ({ onSearch }: SearchInputProps) => {
         <Input
           onChange={handleInputChange}
           type="text"
-          placeholder="Search by Gas Station Name"
+          placeholder="Search Database by Station Name"
         />
 
         <Button onClick={() => onSearch(searchInput)}>
