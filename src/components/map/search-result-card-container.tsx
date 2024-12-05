@@ -6,7 +6,7 @@ import {
   useMapsLibrary,
 } from '@vis.gl/react-google-maps';
 import React, { useCallback, useEffect, useState } from 'react';
-import SearchResultCard from './search-result-card';
+import SearchResultCard from '../store-finder/search-result-card';
 
 const SearchResultCardContainer = () => {
   const map = useMap();

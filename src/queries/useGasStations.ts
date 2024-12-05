@@ -1,13 +1,44 @@
 'use client';
 import { useQuery } from '@tanstack/react-query';
 
-const useGasStations = () => {
-  return useQuery({
-    queryKey: ['gasStations'],
-    queryFn: async () => {
-      console.log('Searching for gas stations');
+export interface QueryParams {
+  limit?: number;
+  searchQuery?: string;
+}
 
-      const res = await fetch('/api/database/gas-stations');
+const createQueryString = (params: QueryParams | undefined): string => {
+  if (!params) {
+    return '';
+  }
+
+  // Filter out undefined or null values
+  const queryString = Object.entries(params)
+    // eslint-disable-next-line no-unused-vars
+    .filter(([_, value]) => value !== undefined && value !== null) // Exclude undefined and null
+    .map(
+      ([key, value]) =>
+        `${encodeURIComponent(key)}=${encodeURIComponent(String(value))}`,
+    ) // Encode key and value
+    .join('&'); // Join with '&'
+
+  return queryString;
+};
+
+const useGasStations = (queryParams?: QueryParams) => {
+  return useQuery({
+    queryKey: ['gasStations', queryParams],
+    queryFn: async () => {
+      const queryString = createQueryString(queryParams);
+
+      let url = '/api/database/gas-stations';
+
+      if (queryString) {
+        url = `${url}?${queryString}`;
+      }
+
+      console.log('Searching for gas stations: ', url);
+
+      const res = await fetch(url);
       if (!res.ok) {
         throw new Error('Network response was not ok');
       }

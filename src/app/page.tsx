@@ -1,7 +1,7 @@
 'use client';
 
 import GoogleMap from '@/components/store-finder/google-map';
-import StoreFinder from '@/components/store-finder/store-finder';
+import StoreFinder from '@/components/map/store-finder';
 import { APIProvider } from '@vis.gl/react-google-maps';
 
 export default function Home() {
