@@ -1,11 +1,4 @@
-import { Place } from '@/types/place';
-import {
-  APILoadingStatus,
-  useApiLoadingStatus,
-  useMap,
-  useMapsLibrary,
-} from '@vis.gl/react-google-maps';
-import React, { useCallback, useEffect, useState } from 'react';
+import React from 'react';
 import SearchResultCard from './search-result-card';
 import { IGasStation } from '@/models/gas-station';
 
