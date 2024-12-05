@@ -6,61 +6,68 @@ import {
   useMapsLibrary,
 } from '@vis.gl/react-google-maps';
 import React, { useCallback, useEffect, useState } from 'react';
-import SearchResultCard from '../store-finder/search-result-card';
+import SearchResultCard from './search-result-card';
+import { IGasStation } from '@/models/gas-station';
 
-const SearchResultCardContainer = () => {
-  const map = useMap();
-  const placesLib = useMapsLibrary('places');
-  const status = useApiLoadingStatus();
+interface SearchResultCardContainerProps {
+  gasStations: IGasStation[];
+}
 
-  const [results, setResults] = useState<Place[]>([]);
+const SearchResultCardContainer = ({
+  gasStations,
+}: SearchResultCardContainerProps) => {
+  // const map = useMap();
+  // const placesLib = useMapsLibrary('places');
+  // const status = useApiLoadingStatus();
 
-  const getPlaces = useCallback(async () => {
-    if (!placesLib || !map) return;
+  // const [results, setResults] = useState<Place[]>([]);
 
-    const svc = new placesLib.PlacesService(map);
+  // const getPlaces = useCallback(async () => {
+  //   if (!placesLib || !map) return;
 
-    svc.nearbySearch(
-      { bounds: map.getBounds(), type: 'gas_station' },
-      (places) => {
-        if (!places) return;
+  //   const svc = new placesLib.PlacesService(map);
 
-        places.map((place) => {
-          if (!place || !place.place_id) return;
+  //   svc.nearbySearch(
+  //     { bounds: map.getBounds(), type: 'gas_station' },
+  //     (places) => {
+  //       if (!places) return;
 
-          svc.getDetails({ placeId: place.place_id }, (place) => {
-            if (!place) return;
-            // console.log('Details: ', place);
+  //       places.map((place) => {
+  //         if (!place || !place.place_id) return;
 
-            const mappedPlace: Place = {
-              id: `${place.place_id!}${place.name}`,
-              name: place.name,
-              address: place.vicinity,
-              rating: place.rating,
-              phone: place.formatted_phone_number,
-              website: place.website,
-              isOpen: place.opening_hours?.isOpen(),
-            };
+  //         svc.getDetails({ placeId: place.place_id }, (place) => {
+  //           if (!place) return;
+  //           // console.log('Details: ', place);
 
-            setResults((prev) => [...prev, mappedPlace]);
-          });
-        });
-      },
-    );
-  }, [map, placesLib]);
+  //           const mappedPlace: Place = {
+  //             id: `${place.place_id!}${place.name}`,
+  //             name: place.name,
+  //             address: place.vicinity,
+  //             rating: place.rating,
+  //             phone: place.formatted_phone_number,
+  //             website: place.website,
+  //             isOpen: place.opening_hours?.isOpen(),
+  //           };
 
-  useEffect(() => {
-    if (!placesLib || !map) return;
+  //           setResults((prev) => [...prev, mappedPlace]);
+  //         });
+  //       });
+  //     },
+  //   );
+  // }, [map, placesLib]);
 
-    getPlaces();
-  }, [placesLib, map, getPlaces]);
+  // useEffect(() => {
+  //   if (!placesLib || !map) return;
 
-  if (status === APILoadingStatus.FAILED) return <div>Error!</div>;
+  //   getPlaces();
+  // }, [placesLib, map, getPlaces]);
 
-  if (results.length === 0) return <div>Loading</div>;
+  // if (status === APILoadingStatus.FAILED) return <div>Error!</div>;
 
-  return results.map((result) => (
-    <SearchResultCard key={result.id} result={result} />
+  // if (results.length === 0) return <div>Loading</div>;
+
+  return gasStations.map((station) => (
+    <SearchResultCard key={station._id} gasStation={station} />
   ));
 };
 

@@ -21,11 +21,11 @@ const SearchInput = ({ onSearch }: SearchInputProps) => {
 
   return (
     <>
-      <div className="flex w-full max-w-sm items-center space-x-2">
+      <div className="flex w-full items-center space-x-2">
         <Input
           onChange={handleInputChange}
           type="text"
-          placeholder="Find Gas Station"
+          placeholder="Search by Gas Station Name"
         />
 
         <Button onClick={() => onSearch(searchInput)}>
