@@ -4,8 +4,6 @@ export const searchAlongRoute = async (
   textQuery: string,
   polyline: string,
 ): Promise<GooglePlace[]> => {
-  console.log('Searching along polyline: ', polyline);
-
   const res = await fetch(
     'https://places.googleapis.com/v1/places:searchText',
     {
