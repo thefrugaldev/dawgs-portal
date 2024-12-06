@@ -6,7 +6,15 @@ import { MapPin } from 'lucide-react';
 import { IGasStation } from '@/models/gas-station';
 import { Button } from '../ui/button';
 
-const SearchResultCard = ({ gasStation }: { gasStation: IGasStation }) => {
+interface SearchResultCardProps {
+  gasStation: IGasStation;
+  onMapButtonClick: () => void;
+}
+
+const SearchResultCard = ({
+  gasStation,
+  onMapButtonClick,
+}: SearchResultCardProps) => {
   // const [favorite, setFavorite] = useState<boolean>(false);
   // const { name, address, rating, phone, website, isOpen } = result;
   const { stationName, stationAddress, lat, long } = gasStation;
@@ -16,7 +24,10 @@ const SearchResultCard = ({ gasStation }: { gasStation: IGasStation }) => {
       <CardHeader>
         <div className="flex items-center justify-between">
           <CardTitle>{stationName}</CardTitle>
-          <Button className="bg-glory hover:bg-glory/90">
+          <Button
+            onClick={onMapButtonClick}
+            className="bg-glory hover:bg-glory/90"
+          >
             Show on map
             <MapPin />
           </Button>

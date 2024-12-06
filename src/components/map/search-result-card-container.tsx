@@ -4,14 +4,28 @@ import { IGasStation } from '@/models/gas-station';
 
 interface SearchResultCardContainerProps {
   gasStations: IGasStation[];
+  // eslint-disable-next-line no-unused-vars
+  onStationSelect: (station: IGasStation) => void;
 }
 
 const SearchResultCardContainer = ({
   gasStations,
+  onStationSelect,
 }: SearchResultCardContainerProps) => {
   // const map = useMap();
   // const placesLib = useMapsLibrary('places');
   // const status = useApiLoadingStatus();
+
+  // const showOnMap = (gasStation: IGasStation) => {
+  //   if (!placesLib || !map) return;
+
+  //   console.log('Showing on map...', gasStation);
+  //   const svc = new placesLib.PlacesService(map);
+
+  //   svc.findPlaceFromQuery({
+  //     query: gasStation.stationAddress
+  //   })
+  // };
 
   // const [results, setResults] = useState<Place[]>([]);
 
@@ -60,7 +74,11 @@ const SearchResultCardContainer = ({
   // if (results.length === 0) return <div>Loading</div>;
 
   return gasStations.map((station) => (
-    <SearchResultCard key={station._id} gasStation={station} />
+    <SearchResultCard
+      key={station._id}
+      onMapButtonClick={() => onStationSelect(station)}
+      gasStation={station}
+    />
   ));
 };
 
