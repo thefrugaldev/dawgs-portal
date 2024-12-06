@@ -30,14 +30,9 @@ const CustomAdvancedMarker = ({ gasStation }: CustomAdvancedMarkerProps) => {
           <div className="image-container">
             <StationImage image={gasStation.imageLink} isExtended={clicked} />
             <span className="icon">
-              <Pin glyphColor={'#000'} scale={1.3}>
-                {/* <Fuel /> */}
-
-                {/* <Bean /> */}
-              </Pin>
+              <Fuel />
             </span>
           </div>
-          HERE IS MY CUSTOM PIN!
           <StationDetails gasStation={gasStation} />
         </div>
 
@@ -57,7 +52,6 @@ const CustomAdvancedMarker = ({ gasStation }: CustomAdvancedMarkerProps) => {
           hovered ? 'hovered' : ''
         }`}
         onClick={() => {
-          console.log('CLICKED!');
           setClicked(!clicked);
         }}
       >

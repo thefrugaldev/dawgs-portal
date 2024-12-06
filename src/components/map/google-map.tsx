@@ -1,11 +1,6 @@
 'use client';
 
-import {
-  Map,
-  useApiLoadingStatus,
-  useMap,
-  useMapsLibrary,
-} from '@vis.gl/react-google-maps';
+import { Map } from '@vis.gl/react-google-maps';
 import {} from '@vis.gl/react-google-maps';
 import React from 'react';
 import { IGasStation } from '@/models/gas-station';

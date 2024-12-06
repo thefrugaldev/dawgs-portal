@@ -9,7 +9,12 @@ interface StationImageProps {
 const StationImage = ({ image, isExtended = false }: StationImageProps) => {
   return (
     <div className={`photo-gallery ${isExtended ? 'extended' : ''}`}>
-      <Image src={image} width={50} height={50} alt="Gas Station Image Photo" />
+      <Image
+        src={image}
+        width={500}
+        height={500}
+        alt="Gas Station Image Photo"
+      />
     </div>
   );
 };
