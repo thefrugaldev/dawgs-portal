@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { IGasStation } from '@/models/gas-station';
 import { ExternalLink } from 'lucide-react';
@@ -6,11 +7,13 @@ import React from 'react';
 interface CustomInfoWindowProps {
   open: boolean;
   gasStation: IGasStation;
+  placeId?: string;
 }
 
 const CustomInfoWindow = ({
   open = false,
   gasStation,
+  placeId,
 }: CustomInfoWindowProps) => {
   const { imageLink, stationAddress, stationName, lat, long } = gasStation;
 
@@ -42,7 +45,7 @@ const CustomInfoWindow = ({
           <a
             href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
               stationAddress,
-            )}`}
+            )}${placeId ? `&query_place_id=${placeId}` : ''}`}
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-600 hover:text-blue-800 text-sm font-medium flex items-center"

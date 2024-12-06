@@ -1,8 +1,8 @@
 'use client';
 
-import { Map } from '@vis.gl/react-google-maps';
+import { Map, useMap, useMapsLibrary } from '@vis.gl/react-google-maps';
 import {} from '@vis.gl/react-google-maps';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { IGasStation } from '@/models/gas-station';
 import CustomAdvancedMarker from './custom-marker/custom-marker';
 
@@ -11,12 +11,36 @@ interface GoogleMapProps {
 }
 
 const GoogleMap = ({ selectedGasStation }: GoogleMapProps) => {
+  const [placeId, setPlaceId] = useState<string>();
+
   const position = { lat: 34.3257, lng: -83.3557 };
-  // const map = useMap();
-  // const placesLib = useMapsLibrary('places');
-  // const status = useApiLoadingStatus();
+  const map = useMap();
+  const placesLib = useMapsLibrary('places');
 
   console.log('Selected Station for Map: ', selectedGasStation);
+
+  useEffect(() => {
+    if (!selectedGasStation || !placesLib || !map) {
+      console.warn('Could not retrieve place id for gas station');
+      return;
+    }
+
+    const svc = new placesLib.PlacesService(map);
+
+    svc.findPlaceFromQuery(
+      {
+        query: `${selectedGasStation.stationName} ${selectedGasStation.stationAddress}`,
+        fields: ['name', 'place_id'],
+      },
+      (place) => {
+        if (place && place.length > 0) {
+          setPlaceId(place[0].place_id);
+        }
+        console.log('Found a place: ', place);
+        // setPlaceId(place.place+)
+      },
+    );
+  }, [map, placesLib, selectedGasStation]);
 
   // const routesLib = useMapsLibrary('routes');
   // const [route, setRoute] = useState<any>([]);
@@ -63,7 +87,10 @@ const GoogleMap = ({ selectedGasStation }: GoogleMapProps) => {
       disableDefaultUI
     >
       {selectedGasStation && (
-        <CustomAdvancedMarker gasStation={selectedGasStation} />
+        <CustomAdvancedMarker
+          gasStation={selectedGasStation}
+          placeId={placeId}
+        />
       )}
       {/* <Polyline
         encodedPath={polyline}

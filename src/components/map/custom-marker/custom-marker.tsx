@@ -3,15 +3,19 @@ import { AdvancedMarker } from '@vis.gl/react-google-maps';
 import React, { useState } from 'react';
 import { MapPin } from 'lucide-react';
 
-import './custom-marker.css';
 import CustomInfoWindow from './custom-info-window';
 
 interface CustomAdvancedMarkerProps {
   gasStation: IGasStation;
+  placeId?: string;
 }
 
-const CustomAdvancedMarker = ({ gasStation }: CustomAdvancedMarkerProps) => {
+const CustomAdvancedMarker = ({
+  gasStation,
+  placeId,
+}: CustomAdvancedMarkerProps) => {
   const [clicked, setClicked] = useState(false);
+
   const position = {
     lat: Number(gasStation.lat),
     lng: Number(gasStation.long),
@@ -29,7 +33,11 @@ const CustomAdvancedMarker = ({ gasStation }: CustomAdvancedMarkerProps) => {
         }}
       >
         <div className="relative">
-          <CustomInfoWindow gasStation={gasStation} open={clicked} />
+          <CustomInfoWindow
+            placeId={placeId}
+            gasStation={gasStation}
+            open={clicked}
+          />
           <MapPin size={32} color="#E4002B" className="absolute" />
         </div>
       </AdvancedMarker>
