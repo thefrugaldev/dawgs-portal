@@ -1,11 +1,10 @@
 import { IGasStation } from '@/models/gas-station';
-import { AdvancedMarker, Pin } from '@vis.gl/react-google-maps';
+import { AdvancedMarker } from '@vis.gl/react-google-maps';
 import React, { useState } from 'react';
-import StationImage from './station-image';
-import { Bean, Fuel } from 'lucide-react';
-import StationDetails from './station-details';
+import { MapPin } from 'lucide-react';
 
 import './custom-marker.css';
+import CustomInfoWindow from './custom-info-window';
 
 interface CustomAdvancedMarkerProps {
   gasStation: IGasStation;
@@ -13,32 +12,9 @@ interface CustomAdvancedMarkerProps {
 
 const CustomAdvancedMarker = ({ gasStation }: CustomAdvancedMarkerProps) => {
   const [clicked, setClicked] = useState(false);
-  const [hovered, setHovered] = useState(false);
   const position = {
     lat: Number(gasStation.lat),
     lng: Number(gasStation.long),
-  };
-  // const position = { lat: 34.3257, lng: -83.3557 };
-
-  const renderCustomPin = () => {
-    return (
-      <>
-        <div className="custom-pin">
-          <button className="close-button">
-            <span className="material-symbols-outlined"> close </span>
-          </button>
-          <div className="image-container">
-            <StationImage image={gasStation.imageLink} isExtended={clicked} />
-            <span className="icon">
-              <Fuel />
-            </span>
-          </div>
-          <StationDetails gasStation={gasStation} />
-        </div>
-
-        <div className="tip" />
-      </>
-    );
   };
 
   return (
@@ -46,16 +22,16 @@ const CustomAdvancedMarker = ({ gasStation }: CustomAdvancedMarkerProps) => {
       <AdvancedMarker
         position={position}
         title={'Custom Gas Station Marker.'}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-        className={`real-estate-marker ${clicked ? 'clicked' : ''} ${
-          hovered ? 'hovered' : ''
-        }`}
+        // onMouseEnter={() => setHovered(true)}
+        // onMouseLeave={() => setHovered(false)}
         onClick={() => {
           setClicked(!clicked);
         }}
       >
-        {renderCustomPin()}
+        <div className="relative">
+          <CustomInfoWindow gasStation={gasStation} open={clicked} />
+          <MapPin size={32} color="#E4002B" className="absolute" />
+        </div>
       </AdvancedMarker>
     </div>
   );
