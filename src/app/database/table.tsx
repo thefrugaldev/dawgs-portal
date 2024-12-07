@@ -58,6 +58,7 @@ const Table = ({ onRowClick }: TableProps) => {
                 Number of Daily Customers
               </th>
               <th className="w-1/8 px-3 py-1 border truncate">Image(s)</th>
+              <th className="w-1/8 px-3 py-1 border truncate">Map Link</th>
               <th className="w-[10px] px-3 py-1 border truncate">Notes</th>
               <th className="w-[10px] px-3 py-1 border truncate">
                 Updated Date
@@ -122,8 +123,20 @@ const Table = ({ onRowClick }: TableProps) => {
                   ) : null}
                 </td>
                 <td className="px-3 py-1 border">
-                  <div className="w-36 text-ellipsis overflow-hidden whitespace-nowrap">
+                  {item.googleLink ? (
+                    <a
+                      href={item.googleLink}
+                      target="_blank"
+                      className="text-blue-600 hover:underline"
+                    >
+                      <Image />
+                    </a>
+                  ) : null}
+                </td>
+                <td className="px-3 py-1 border group relative  justify-center">
+                  <div className="w-36 text-ellipsis overflow-hidden whitespace-nowrap ">
                     {item.notes}
+                    <span className="absolute top-10 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">{item.notes}</span>
                   </div>
                 </td>
                 <td className="px-3 py-1 border">
