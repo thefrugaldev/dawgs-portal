@@ -50,6 +50,7 @@ export const formSchema = z.object({
   notes: z.string(),
   createdDate: z.date(),
   updatedBy: z.string(),
+  googleLink: z.string(),
 });
 
 interface DatabaseFormProps {
@@ -97,6 +98,7 @@ const DatabaseForm = ({
           notes: '',
           createdDate: new Date(),
           updatedBy: user?.email!,
+          googleLink: '',
         },
   });
 
