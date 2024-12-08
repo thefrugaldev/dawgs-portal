@@ -1,19 +1,14 @@
 import { IGasStation } from '@/models/gas-station';
 import { AdvancedMarker, Pin } from '@vis.gl/react-google-maps';
 import React, { useState } from 'react';
-import { Fuel, MapPin } from 'lucide-react';
-
-import CustomInfoWindow from './custom-info-window';
+import { Fuel } from 'lucide-react';
 
 interface CustomAdvancedMarkerProps {
   gasStation: IGasStation;
   placeId?: string;
 }
 
-const CustomAdvancedMarker = ({
-  gasStation,
-  placeId,
-}: CustomAdvancedMarkerProps) => {
+const CustomAdvancedMarker = ({ gasStation }: CustomAdvancedMarkerProps) => {
   const [clicked, setClicked] = useState(false);
 
   const position = {

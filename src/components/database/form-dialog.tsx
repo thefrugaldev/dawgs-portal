@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   Dialog,
   DialogContent,
@@ -14,7 +14,6 @@ import { Button } from '../ui/button';
 import DatabaseForm from './form';
 import { ScrollArea } from '../ui/scroll-area';
 import { IGasStation } from '@/models/gas-station';
-import { useMap, useMapsLibrary } from '@vis.gl/react-google-maps';
 
 interface DatabaseFormDialogProps {
   selectedGasStation?: IGasStation;

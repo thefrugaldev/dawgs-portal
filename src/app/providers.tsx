@@ -8,7 +8,6 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query';
-import { APIProvider } from '@vis.gl/react-google-maps';
 import React from 'react';
 
 function makeQueryClient() {

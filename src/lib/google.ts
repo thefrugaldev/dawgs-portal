@@ -1,6 +1,5 @@
 import { IGasStation } from '@/models/gas-station';
 import { GooglePlace } from '@/types/google';
-import { useMap, useMapsLibrary } from '@vis.gl/react-google-maps';
 
 export const searchAlongRoute = async (
   textQuery: string,

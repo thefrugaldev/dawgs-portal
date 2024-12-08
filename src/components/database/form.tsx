@@ -26,7 +26,6 @@ import { useRouter } from 'next/navigation';
 import { IGasStation } from '@/models/gas-station';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import { callFindPlaceFromQuery } from '@/lib/google';
-import { useMap, useMapsLibrary } from '@vis.gl/react-google-maps';
 
 export const formSchema = z.object({
   _id: z.string(),
@@ -67,8 +66,6 @@ const DatabaseForm = ({
   const { refetch } = useGasStations();
   const router = useRouter();
   const { user } = useUser();
-  const map = useMap(process.env.NEXT_PUBLIC_GOOGLE_API_KEY);
-  const placesLib = useMapsLibrary('places');
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
