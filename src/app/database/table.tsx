@@ -2,7 +2,7 @@
 'use client';
 import { IGasStation } from '@/models/gas-station';
 import useGasStations from '@/queries/useGasStations';
-import { Ban, Check, Image, Pencil } from 'lucide-react';
+import { Ban, Check, ExternalLink, Image, Pencil } from 'lucide-react';
 import React from 'react';
 import dayjs from 'dayjs';
 
@@ -29,11 +29,11 @@ const Table = ({ onRowClick }: TableProps) => {
         >
           <thead className="text-xs text-gray-700 bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-            <th className="w-1/12 px-3 py-1 border truncate">Edit</th>
+              <th className="w-1/12 px-3 py-1 border truncate">Edit</th>
+              <th className="w-1/12 px-3 py-1 border truncate">Station Name</th>
               <th className="w-1/12 px-3 py-1 border truncate">
-                Station Name
+                Station Address
               </th>
-              <th className="w-1/12 px-3 py-1 border truncate">Station Address</th>
               <th className="w-1/12 px-3 py-1 border truncate">Location</th>
               <th className="w-1/8 px-3 py-1 border truncate">Gas Pumps</th>
               <th className="w-1/8 px-3 py-1 border truncate">Diesel Pumps</th>
@@ -129,14 +129,16 @@ const Table = ({ onRowClick }: TableProps) => {
                       target="_blank"
                       className="text-blue-600 hover:underline"
                     >
-                      <Image />
+                      <ExternalLink />
                     </a>
                   ) : null}
                 </td>
                 <td className="px-3 py-1 border group relative  justify-center">
                   <div className="w-36 text-ellipsis overflow-hidden whitespace-nowrap ">
                     {item.notes}
-                    <span className="absolute top-10 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">{item.notes}</span>
+                    <span className="absolute top-10 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
+                      {item.notes}
+                    </span>
                   </div>
                 </td>
                 <td className="px-3 py-1 border">
