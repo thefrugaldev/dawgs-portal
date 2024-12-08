@@ -2,7 +2,7 @@
 'use client';
 import React from 'react';
 import { Card, CardHeader, CardTitle } from '../ui/card';
-import { MapPin } from 'lucide-react';
+import { ExternalLink, MapPin } from 'lucide-react';
 import { IGasStation } from '@/models/gas-station';
 import { Button } from '../ui/button';
 
@@ -17,7 +17,7 @@ const SearchResultCard = ({
 }: SearchResultCardProps) => {
   // const [favorite, setFavorite] = useState<boolean>(false);
   // const { name, address, rating, phone, website, isOpen } = result;
-  const { stationName, stationAddress, lat, long } = gasStation;
+  const { stationName, stationAddress, lat, long, googleLink } = gasStation;
 
   return (
     <Card className="w-full border-glory">
@@ -53,6 +53,20 @@ const SearchResultCard = ({
             {lat}, {long}
           </span>
         </p>
+
+        {googleLink && (
+          <p>
+            <a
+              href={googleLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:text-blue-800 text-sm font-medium flex items-center"
+            >
+              More information
+              <ExternalLink size={16} className="ml-1" />
+            </a>
+          </p>
+        )}
       </CardHeader>
       {/* <CardContent>
         <p className="text-sm text-muted-foreground">
