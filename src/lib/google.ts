@@ -34,39 +34,48 @@ export const searchAlongRoute = async (
   return json;
 };
 
-export const getPlaceId = async (gastStation: IGasStation) => {
-  console.log('Selected Stations for Map: ', gastStation);
+function findPlaceFromQueryAsync(
+  googleMapsService: google.maps.places.PlacesService,
+  request: google.maps.places.FindPlaceFromQueryRequest,
+) {
+  return new Promise((resolve, reject) => {
+    googleMapsService.findPlaceFromQuery(request, (results, status) => {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        resolve(results);
+      } else {
+        reject(`Error: ${status}`);
+      }
+    });
+  });
+}
 
-  // GET PLACE ID
-  // if (!gastStation || !placesLib || !map) {
-  //   console.warn(
-  //     'Could not retrieve place id for gas station',
-  //     gastStation,
-  //     placesLib,
-  //     map,
-  //   );
-  //   return;
-  // }
-
-  const svc = new google.maps.places.PlacesService(
-    document.createElement('div'),
-  );
-
-  // const svc = new placesLib.PlacesService(map);
-
-  svc.findPlaceFromQuery(
-    {
+export async function callFindPlaceFromQuery(gastStation: IGasStation) {
+  try {
+    const googleMapsService = new google.maps.places.PlacesService(
+      document.createElement('div'),
+    );
+    const request = {
       query: `${gastStation.stationName} ${gastStation.stationAddress}`,
       fields: ['name', 'place_id'],
-    },
-    (place) => {
-      console.log('PLACE: ', place);
+    };
 
-      if (place && place.length > 0) {
-        return place[0].place_id;
-      }
-    },
-  );
+    // Wait for the callback to complete
+    const places = (await findPlaceFromQueryAsync(
+      googleMapsService,
+      request,
+    )) as google.maps.places.PlaceResult[];
 
-  return {};
-};
+    // Proceed with the results
+    console.log('Place results:', places);
+
+    if (places && places.length > 0) {
+      return places[0].place_id;
+    }
+
+    return places;
+
+    // Perform further operations here
+  } catch (error) {
+    console.error(error);
+  }
+}

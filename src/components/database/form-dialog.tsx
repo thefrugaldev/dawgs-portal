@@ -28,12 +28,6 @@ const DatabaseFormDialog = ({
   onOpenChange,
   isOpen,
 }: DatabaseFormDialogProps) => {
-  const map = useMap();
-  const placesLib = useMapsLibrary('places');
-
-  useEffect(() => {
-    console.log('Map: ', map, placesLib);
-  }, [map, placesLib]);
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogTrigger asChild>

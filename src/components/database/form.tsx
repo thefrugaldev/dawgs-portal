@@ -25,7 +25,7 @@ import { addGasStation } from '@/app/actions';
 import { useRouter } from 'next/navigation';
 import { IGasStation } from '@/models/gas-station';
 import { useUser } from '@auth0/nextjs-auth0/client';
-import { getPlaceId } from '@/lib/google';
+import { callFindPlaceFromQuery } from '@/lib/google';
 import { useMap, useMapsLibrary } from '@vis.gl/react-google-maps';
 
 export const formSchema = z.object({
@@ -107,10 +107,6 @@ const DatabaseForm = ({
   });
 
   useEffect(() => {
-    console.log('Map: ', map, placesLib);
-  }, [map, placesLib]);
-
-  useEffect(() => {
     console.log(
       'ERRORS',
 
@@ -128,7 +124,7 @@ const DatabaseForm = ({
       return;
     }
 
-    const placeId = await getPlaceId(values);
+    const placeId = await callFindPlaceFromQuery(values);
 
     let googleLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
       values.stationAddress,
@@ -144,8 +140,6 @@ const DatabaseForm = ({
       ...values,
       googleLink,
     };
-
-    console.log('Google Link: ', googleLink);
 
     console.log('No errors, creating gas station.', values);
     await addGasStation(values);

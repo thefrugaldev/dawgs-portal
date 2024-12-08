@@ -7,6 +7,7 @@ import { getSession } from '@auth0/nextjs-auth0';
 import { redirect } from 'next/navigation';
 
 import Providers from './providers';
+import { APIProvider } from '@vis.gl/react-google-maps';
 
 const inter = Inter({ subsets: ['latin'] });
 

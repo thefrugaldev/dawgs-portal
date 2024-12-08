@@ -89,7 +89,11 @@ const GoogleMap = ({ selectedGasStations }: GoogleMapProps) => {
     >
       {selectedGasStations?.length > 0 &&
         selectedGasStations.map((station) => (
-          <CustomAdvancedMarker gasStation={station} placeId={placeId} />
+          <CustomAdvancedMarker
+            key={station._id}
+            gasStation={station}
+            placeId={placeId}
+          />
         ))}
       {/* <Polyline
         encodedPath={polyline}
