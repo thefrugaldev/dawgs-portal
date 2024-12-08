@@ -1,7 +1,7 @@
 import { IGasStation } from '@/models/gas-station';
-import { AdvancedMarker } from '@vis.gl/react-google-maps';
+import { AdvancedMarker, Pin } from '@vis.gl/react-google-maps';
 import React, { useState } from 'react';
-import { MapPin } from 'lucide-react';
+import { Fuel, MapPin } from 'lucide-react';
 
 import CustomInfoWindow from './custom-info-window';
 
@@ -38,7 +38,9 @@ const CustomAdvancedMarker = ({
             gasStation={gasStation}
             open={clicked}
           />
-          <MapPin size={32} color="#E4002B" className="absolute" />
+          <Pin glyphColor={'#fff'} scale={1.3}>
+            <Fuel />
+          </Pin>
         </div>
       </AdvancedMarker>
     </div>

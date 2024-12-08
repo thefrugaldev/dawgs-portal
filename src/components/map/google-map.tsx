@@ -7,40 +7,41 @@ import { IGasStation } from '@/models/gas-station';
 import CustomAdvancedMarker from './custom-marker/custom-marker';
 
 interface GoogleMapProps {
-  selectedGasStation?: IGasStation;
+  selectedGasStations: IGasStation[];
 }
 
-const GoogleMap = ({ selectedGasStation }: GoogleMapProps) => {
+const GoogleMap = ({ selectedGasStations }: GoogleMapProps) => {
   const [placeId, setPlaceId] = useState<string>();
 
   const position = { lat: 34.3257, lng: -83.3557 };
   const map = useMap();
   const placesLib = useMapsLibrary('places');
 
-  console.log('Selected Station for Map: ', selectedGasStation);
+  console.log('Selected Stations for Map: ', selectedGasStations);
 
-  useEffect(() => {
-    if (!selectedGasStation || !placesLib || !map) {
-      console.warn('Could not retrieve place id for gas station');
-      return;
-    }
+  // GET PLACE ID
+  // useEffect(() => {
+  //   if (!selectedGasStations ||  || !placesLib || !map) {
+  //     console.warn('Could not retrieve place id for gas station');
+  //     return;
+  //   }
 
-    const svc = new placesLib.PlacesService(map);
+  //   const svc = new placesLib.PlacesService(map);
 
-    svc.findPlaceFromQuery(
-      {
-        query: `${selectedGasStation.stationName} ${selectedGasStation.stationAddress}`,
-        fields: ['name', 'place_id'],
-      },
-      (place) => {
-        if (place && place.length > 0) {
-          setPlaceId(place[0].place_id);
-        }
-        console.log('Found a place: ', place);
-        // setPlaceId(place.place+)
-      },
-    );
-  }, [map, placesLib, selectedGasStation]);
+  //   svc.findPlaceFromQuery(
+  //     {
+  //       query: `${selectedGasStation.stationName} ${selectedGasStation.stationAddress}`,
+  //       fields: ['name', 'place_id'],
+  //     },
+  //     (place) => {
+  //       if (place && place.length > 0) {
+  //         setPlaceId(place[0].place_id);
+  //       }
+  //       console.log('Found a place: ', place);
+  //       // setPlaceId(place.place+)
+  //     },
+  //   );
+  // }, [map, placesLib, selectedGasStation]);
 
   // const routesLib = useMapsLibrary('routes');
   // const [route, setRoute] = useState<any>([]);
@@ -86,12 +87,10 @@ const GoogleMap = ({ selectedGasStation }: GoogleMapProps) => {
       gestureHandling={'greedy'}
       disableDefaultUI
     >
-      {selectedGasStation && (
-        <CustomAdvancedMarker
-          gasStation={selectedGasStation}
-          placeId={placeId}
-        />
-      )}
+      {selectedGasStations?.length > 0 &&
+        selectedGasStations.map((station) => (
+          <CustomAdvancedMarker gasStation={station} placeId={placeId} />
+        ))}
       {/* <Polyline
         encodedPath={polyline}
         strokeWeight={10}
