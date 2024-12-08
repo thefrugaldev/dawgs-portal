@@ -95,9 +95,12 @@ const Table = ({ onRowClick }: TableProps) => {
                 <td className="px-3 py-1 border">{item.ecCount}</td>
                 <td className="px-3 py-1 border">{item.chargeCapacity}</td>
                 <td className="px-3 py-1 border">{item.shopCount}</td>
-                <td className="px-3 py-1 border truncate">
-                  <div className="w-36 text-ellipsis overflow-hidden whitespace-nowrap">
-                    {item.shopNames}
+                <td className="px-3 py-1 border group relative">
+                  <div className="w-36 text-ellipsis overflow-hidden whitespace-nowrap ">{item.shopNames}
+                    {item.shopNames ? (
+                    <span className="w-80 text-wrap absolute top-0 right-0 scale-0 rounded bg-gray-800 p-2 text-white group-hover:scale-100">
+                      {item.shopNames}
+                    </span>) : null}
                   </div>
                 </td>
                 <td className="px-3 py-1 border">
@@ -133,12 +136,12 @@ const Table = ({ onRowClick }: TableProps) => {
                     </a>
                   ) : null}
                 </td>
-                <td className="px-3 py-1 border group relative  justify-center">
-                  <div className="w-36 text-ellipsis overflow-hidden whitespace-nowrap ">
-                    {item.notes}
-                    <span className="absolute top-10 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
+                <td className="px-3 py-1 border group relative">
+                  <div className="w-36 text-ellipsis overflow-hidden whitespace-nowrap ">{item.notes}
+                    {item.notes ? (
+                    <span className="w-80 text-wrap absolute top-0 right-0 scale-0 rounded bg-gray-800 p-2 text-white group-hover:scale-100">
                       {item.notes}
-                    </span>
+                    </span>) : null}
                   </div>
                 </td>
                 <td className="px-3 py-1 border">
