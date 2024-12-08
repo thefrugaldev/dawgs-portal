@@ -7,18 +7,22 @@ import { useState } from 'react';
 import { IGasStation } from '@/models/gas-station';
 
 export default function Home() {
-  const [selectedStation, setSelectedStation] = useState<IGasStation>();
+  const [selectedStations, setSelectedStations] = useState<IGasStation[]>([]);
 
   return (
-    <main className="flex min-h-screen justify-between">
-      <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY || ''}>
+    <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY || ''}>
+      <main className="flex min-h-screen justify-between">
         <aside className="flex-1 h-screen">
-          <StoreFinder onStationSelect={setSelectedStation} />
+          <StoreFinder
+            onStationSelect={(station) =>
+              setSelectedStations((prevStations) => [...prevStations, station])
+            }
+          />
         </aside>
         <div className="overflow-hidden h-screen w-8/12 relative">
-          <GoogleMap selectedGasStation={selectedStation} />
+          <GoogleMap selectedGasStations={selectedStations} />
         </div>
-      </APIProvider>
-    </main>
+      </main>
+    </APIProvider>
   );
 }

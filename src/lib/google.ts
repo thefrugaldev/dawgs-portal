@@ -1,3 +1,4 @@
+import { IGasStation } from '@/models/gas-station';
 import { GooglePlace } from '@/types/google';
 
 export const searchAlongRoute = async (
@@ -31,3 +32,49 @@ export const searchAlongRoute = async (
 
   return json;
 };
+
+function findPlaceFromQueryAsync(
+  googleMapsService: google.maps.places.PlacesService,
+  request: google.maps.places.FindPlaceFromQueryRequest,
+) {
+  return new Promise((resolve, reject) => {
+    googleMapsService.findPlaceFromQuery(request, (results, status) => {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        resolve(results);
+      } else {
+        reject(`Error: ${status}`);
+      }
+    });
+  });
+}
+
+export async function callFindPlaceFromQuery(gastStation: IGasStation) {
+  try {
+    const googleMapsService = new google.maps.places.PlacesService(
+      document.createElement('div'),
+    );
+    const request = {
+      query: `${gastStation.stationName} ${gastStation.stationAddress}`,
+      fields: ['name', 'place_id'],
+    };
+
+    // Wait for the callback to complete
+    const places = (await findPlaceFromQueryAsync(
+      googleMapsService,
+      request,
+    )) as google.maps.places.PlaceResult[];
+
+    // Proceed with the results
+    console.log('Place results:', places);
+
+    if (places && places.length > 0) {
+      return places[0].place_id;
+    }
+
+    return places;
+
+    // Perform further operations here
+  } catch (error) {
+    console.error(error);
+  }
+}

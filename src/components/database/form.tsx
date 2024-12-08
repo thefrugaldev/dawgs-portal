@@ -25,6 +25,7 @@ import { addGasStation } from '@/app/actions';
 import { useRouter } from 'next/navigation';
 import { IGasStation } from '@/models/gas-station';
 import { useUser } from '@auth0/nextjs-auth0/client';
+import { callFindPlaceFromQuery } from '@/lib/google';
 
 export const formSchema = z.object({
   _id: z.string(),
@@ -50,7 +51,7 @@ export const formSchema = z.object({
   notes: z.string(),
   createdDate: z.date(),
   updatedBy: z.string(),
-  googleLink: z.string(),
+  googleLink: z.string().optional(),
 });
 
 interface DatabaseFormProps {
@@ -119,6 +120,23 @@ const DatabaseForm = ({
 
       return;
     }
+
+    const placeId = await callFindPlaceFromQuery(values);
+
+    let googleLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+      values.stationAddress,
+    )}`;
+
+    if (placeId) {
+      console.log('Adding place id: ', placeId);
+
+      googleLink = `${googleLink}&query_place_id=${placeId}`;
+    }
+
+    values = {
+      ...values,
+      googleLink,
+    };
 
     console.log('No errors, creating gas station.', values);
     await addGasStation(values);

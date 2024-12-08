@@ -36,8 +36,6 @@ const useGasStations = (queryParams?: QueryParams) => {
         url = `${url}?${queryString}`;
       }
 
-      console.log('Searching for gas stations: ', url);
-
       const res = await fetch(url);
       if (!res.ok) {
         throw new Error('Network response was not ok');
