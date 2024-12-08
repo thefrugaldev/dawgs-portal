@@ -22,7 +22,13 @@ const SearchInput = ({ onSearch }: SearchInputProps) => {
 
   return (
     <>
-      <div className="flex w-full items-center space-x-2">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          onSearch(searchInput);
+        }}
+        className="flex w-full items-center space-x-2"
+      >
         <Input
           onChange={handleInputChange}
           type="text"
@@ -32,7 +38,7 @@ const SearchInput = ({ onSearch }: SearchInputProps) => {
         <Button onClick={() => onSearch(searchInput)}>
           <Search />
         </Button>
-      </div>
+      </form>
     </>
   );
 };
