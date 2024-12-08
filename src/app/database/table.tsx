@@ -98,7 +98,7 @@ const Table = ({ onRowClick }: TableProps) => {
                 <td className="px-3 py-1 border group relative">
                   <div className="w-36 text-ellipsis overflow-hidden whitespace-nowrap ">{item.shopNames}
                     {item.shopNames ? (
-                    <span className="w-80 text-wrap absolute top-0 right-0 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
+                    <span className="w-80 text-wrap absolute top-0 right-0 scale-0 rounded bg-gray-800 p-2 text-white group-hover:scale-100">
                       {item.shopNames}
                     </span>) : null}
                   </div>
@@ -139,7 +139,7 @@ const Table = ({ onRowClick }: TableProps) => {
                 <td className="px-3 py-1 border group relative">
                   <div className="w-36 text-ellipsis overflow-hidden whitespace-nowrap ">{item.notes}
                     {item.notes ? (
-                    <span className="w-80 text-wrap absolute top-0 right-0 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
+                    <span className="w-80 text-wrap absolute top-0 right-0 scale-0 rounded bg-gray-800 p-2 text-white group-hover:scale-100">
                       {item.notes}
                     </span>) : null}
                   </div>
