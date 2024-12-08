@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Dialog,
   DialogContent,
@@ -14,6 +14,7 @@ import { Button } from '../ui/button';
 import DatabaseForm from './form';
 import { ScrollArea } from '../ui/scroll-area';
 import { IGasStation } from '@/models/gas-station';
+import { useMap, useMapsLibrary } from '@vis.gl/react-google-maps';
 
 interface DatabaseFormDialogProps {
   selectedGasStation?: IGasStation;
@@ -27,6 +28,12 @@ const DatabaseFormDialog = ({
   onOpenChange,
   isOpen,
 }: DatabaseFormDialogProps) => {
+  const map = useMap();
+  const placesLib = useMapsLibrary('places');
+
+  useEffect(() => {
+    console.log('Map: ', map, placesLib);
+  }, [map, placesLib]);
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogTrigger asChild>

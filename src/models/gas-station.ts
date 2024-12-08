@@ -24,7 +24,7 @@ export interface IGasStation {
   notes: string;
   createdDate: Date;
   updatedBy: string;
-  googleLink: string;
+  googleLink?: string;
 }
 
 const gasStationSchema = new Schema<IGasStation>({
@@ -123,7 +123,7 @@ const gasStationSchema = new Schema<IGasStation>({
   googleLink: {
     type: String,
     required: false,
-  }
+  },
 });
 
 export default models.gasstations || model('gasstations', gasStationSchema);

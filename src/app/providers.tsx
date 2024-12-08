@@ -8,6 +8,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query';
+import { APIProvider } from '@vis.gl/react-google-maps';
 import React from 'react';
 
 function makeQueryClient() {
@@ -48,6 +49,9 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   return (
     <UserProvider>
       <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      <APIProvider
+        apiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY || ''}
+      ></APIProvider>
     </UserProvider>
   );
 }

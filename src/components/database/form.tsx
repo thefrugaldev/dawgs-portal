@@ -25,6 +25,8 @@ import { addGasStation } from '@/app/actions';
 import { useRouter } from 'next/navigation';
 import { IGasStation } from '@/models/gas-station';
 import { useUser } from '@auth0/nextjs-auth0/client';
+import { getPlaceId } from '@/lib/google';
+import { useMap, useMapsLibrary } from '@vis.gl/react-google-maps';
 
 export const formSchema = z.object({
   _id: z.string(),
@@ -50,7 +52,7 @@ export const formSchema = z.object({
   notes: z.string(),
   createdDate: z.date(),
   updatedBy: z.string(),
-  googleLink: z.string(),
+  googleLink: z.string().optional(),
 });
 
 interface DatabaseFormProps {
@@ -65,6 +67,8 @@ const DatabaseForm = ({
   const { refetch } = useGasStations();
   const router = useRouter();
   const { user } = useUser();
+  const map = useMap(process.env.NEXT_PUBLIC_GOOGLE_API_KEY);
+  const placesLib = useMapsLibrary('places');
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -103,6 +107,10 @@ const DatabaseForm = ({
   });
 
   useEffect(() => {
+    console.log('Map: ', map, placesLib);
+  }, [map, placesLib]);
+
+  useEffect(() => {
     console.log(
       'ERRORS',
 
@@ -119,6 +127,25 @@ const DatabaseForm = ({
 
       return;
     }
+
+    const placeId = await getPlaceId(values);
+
+    let googleLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+      values.stationAddress,
+    )}`;
+
+    if (placeId) {
+      console.log('Adding place id: ', placeId);
+
+      googleLink = `${googleLink}&query_place_id=${placeId}`;
+    }
+
+    values = {
+      ...values,
+      googleLink,
+    };
+
+    console.log('Google Link: ', googleLink);
 
     console.log('No errors, creating gas station.', values);
     await addGasStation(values);

@@ -28,6 +28,10 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
+      <script
+        async
+        src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}&libraries=places`}
+      ></script>
       <link rel="icon" href="/favicon.ico" sizes="any" />
       <body className={inter.className}>
         <Providers>

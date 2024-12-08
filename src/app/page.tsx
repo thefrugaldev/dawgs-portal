@@ -11,18 +11,16 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen justify-between">
-      <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY || ''}>
-        <aside className="flex-1 h-screen">
-          <StoreFinder
-            onStationSelect={(station) =>
-              setSelectedStations((prevStations) => [...prevStations, station])
-            }
-          />
-        </aside>
-        <div className="overflow-hidden h-screen w-8/12 relative">
-          <GoogleMap selectedGasStations={selectedStations} />
-        </div>
-      </APIProvider>
+      <aside className="flex-1 h-screen">
+        <StoreFinder
+          onStationSelect={(station) =>
+            setSelectedStations((prevStations) => [...prevStations, station])
+          }
+        />
+      </aside>
+      <div className="overflow-hidden h-screen w-8/12 relative">
+        <GoogleMap selectedGasStations={selectedStations} />
+      </div>
     </main>
   );
 }

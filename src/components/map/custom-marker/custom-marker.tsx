@@ -26,18 +26,17 @@ const CustomAdvancedMarker = ({
       <AdvancedMarker
         position={position}
         title={'Custom Gas Station Marker.'}
-        // onMouseEnter={() => setHovered(true)}
-        // onMouseLeave={() => setHovered(false)}
         onClick={() => {
           setClicked(!clicked);
         }}
       >
         <div className="relative">
-          <CustomInfoWindow
+          {/* TODO: Uncomment if you want a custom marker and comment out the Pin/Fuel components */}
+          {/* <CustomInfoWindow
             placeId={placeId}
             gasStation={gasStation}
             open={clicked}
-          />
+          /> */}
           <Pin glyphColor={'#fff'} scale={1.3}>
             <Fuel />
           </Pin>
