@@ -45,4 +45,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## Development Team
 
-Addison Hicks, Aaron Bemis
+Addison Hicks, Aaron Bemis, Clayton Orman, Elizabeth Salami, Kyle Freese, Guy Primiano, Hannah Finley
